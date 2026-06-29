@@ -1,38 +1,61 @@
 import WebsiteBreadcrumb from "@/components/application/Website/WebsiteBreadcrumb"
-import axios from "axios"
 import Image from "next/image"
 import imgPlaceholder from '@/public/assets/images/img-placeholder.webp'
 import Link from "next/link"
 import { WEBSITE_PRODUCT_DETAILS } from "@/Routes/website"
+import { connectToDB } from "@/lib/dbconnection"
+import OrderModel from "@/models/Order.model"
 
 const OrderDetails = async ({params}) => {
+  try {
+    const {orderid} = await params
+    
+    await connectToDB()
 
-  const {orderid} = await params
-  const {data:orderData}=await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/orders/get/${orderid}`)
-
-  const breadcrumb = {
-    title :'Order Details',
-    links : [{label:'Order Details'}]
-  }
-
-  return (
-    <div>
-        <WebsiteBreadcrumb props={breadcrumb} />
-        <div className="lg:px-32 px-5 my-20">
-          {orderData && !orderData.success
-          ?
+    if (!orderid) {
+      return (
         <div className="flex justify-center items-center py-32">
           <h4 className="text-red-500 text-xl font-semibold">Order Not Found !!!</h4>
         </div>
-        :
-       <div>
+      )
+    }
 
-        <div className="mb-5">
-          <p><b>Order Id : </b>{orderData?.data?.order_id}</p>
-          <p><b>Transaction Id : </b>{orderData?.data?.payment_id}</p>
-          <p className="capitalize"><b>Status : </b>{orderData?.data?.status}</p>
+    const orderData = await OrderModel.findOne({order_id:orderid})
+      .populate('product.productId', 'name slug')
+      .populate({
+        path: 'product.variantId',
+        populate: {path: 'media'}
+      })
+      .lean()
+
+    if (!orderData) {
+      return (
+        <div className="flex justify-center items-center py-32">
+          <h4 className="text-red-500 text-xl font-semibold">Order Not Found !!!</h4>
         </div>
-        <table className="w-full border">
+      )
+    }
+
+    // Convert Mongoose objects to plain JS objects
+    const plainOrderData = JSON.parse(JSON.stringify(orderData))
+
+    const breadcrumb = {
+      title: 'Order Details',
+      links: [{label:'Order Details'}]
+    }
+
+    return (
+      <div>
+        <WebsiteBreadcrumb props={breadcrumb} />
+        <div className="lg:px-32 px-5 my-20">
+         <div>
+
+          <div className="mb-5">
+            <p><b>Order Id : </b>{plainOrderData?.order_id}</p>
+            <p><b>Transaction Id : </b>{plainOrderData?.payment_id}</p>
+            <p className="capitalize"><b>Status : </b>{plainOrderData?.status}</p>
+          </div>
+          <table className="w-full border">
 <thead className="border-b bg-gray-50 md:table-header-group hidden">
   <tr>
     <th className="text-start p-3">Product</th>
@@ -42,7 +65,7 @@ const OrderDetails = async ({params}) => {
   </tr>
 </thead>
 <tbody>
-  {orderData && orderData?.data?.product?.map((product)=>(
+  {plainOrderData && plainOrderData?.product?.map((product)=>(
     <tr key={product.variantId._id} className="md:table-row block border-b">
       <td className="p-3">
         <div className="flex items-center gap-5">
@@ -75,7 +98,7 @@ const OrderDetails = async ({params}) => {
     </tr>
   ))}
 </tbody>
-        </table>
+          </table>
 
 <div className="grid md:grid-cols-2 grid-cols-1 gap-10 border mt-10"> 
   <div className="p-5">
@@ -85,39 +108,39 @@ const OrderDetails = async ({params}) => {
   <tbody>
 <tr>
   <td className="font-medium py-2">Name</td>
-  <td className="text-end py-2">{orderData?.data?.name}</td>
+  <td className="text-end py-2">{plainOrderData?.name}</td>
 </tr>
 <tr>
   <td className="font-medium py-2">Email</td>
-  <td className="text-end py-2">{orderData?.data?.email}</td>
+  <td className="text-end py-2">{plainOrderData?.email}</td>
 </tr>
 <tr>
   <td className="font-medium py-2">Phone</td>
-  <td className="text-end py-2">{orderData?.data?.phone}</td>
+  <td className="text-end py-2">{plainOrderData?.phone}</td>
 </tr>
 <tr>
   <td className="font-medium py-2">Country</td>
-  <td className="text-end py-2">{orderData?.data?.country}</td>
+  <td className="text-end py-2">{plainOrderData?.country}</td>
 </tr>
 <tr>
   <td className="font-medium py-2">State</td>
-  <td className="text-end py-2">{orderData?.data?.state}</td>
+  <td className="text-end py-2">{plainOrderData?.state}</td>
 </tr>
 <tr>
   <td className="font-medium py-2">City</td>
-  <td className="text-end py-2">{orderData?.data?.city}</td>
+  <td className="text-end py-2">{plainOrderData?.city}</td>
 </tr>
 <tr>
   <td className="font-medium py-2">Pincode</td>
-  <td className="text-end py-2">{orderData?.data?.pincode}</td>
+  <td className="text-end py-2">{plainOrderData?.pincode}</td>
 </tr>
 <tr>
   <td className="font-medium py-2">Landmark</td>
-  <td className="text-end py-2">{orderData?.data?.landmark}</td>
+  <td className="text-end py-2">{plainOrderData?.landmark}</td>
 </tr>
 <tr>
   <td className="font-medium py-2">Ordernote</td>
-  <td className="text-end py-2">{orderData?.data?.ordernote || '---'}</td>
+  <td className="text-end py-2">{plainOrderData?.ordernote || '---'}</td>
 </tr>
   </tbody>
   
@@ -132,19 +155,19 @@ const OrderDetails = async ({params}) => {
   <tbody>
 <tr>
   <td className="font-medium py-2">Subtotal</td>
-  <td className="text-end py-2">{orderData?.data?.subtotal.toLocaleString('en-IN',{style:'currency',currency:'INR'})}</td>
+  <td className="text-end py-2">{plainOrderData?.subtotal.toLocaleString('en-IN',{style:'currency',currency:'INR'})}</td>
 </tr>
 <tr>
   <td className="font-medium py-2">Discount</td>
-  <td className="text-end py-2">{orderData?.data?.discount.toLocaleString('en-IN',{style:'currency',currency:'INR'})}</td>
+  <td className="text-end py-2">{plainOrderData?.discount.toLocaleString('en-IN',{style:'currency',currency:'INR'})}</td>
 </tr>
 <tr>
   <td className="font-medium py-2">Coupon Discount</td>
-  <td className="text-end py-2">{orderData?.data?.couponDiscountAmount.toLocaleString('en-IN',{style:'currency',currency:'INR'})}</td>
+  <td className="text-end py-2">{plainOrderData?.couponDiscountAmount.toLocaleString('en-IN',{style:'currency',currency:'INR'})}</td>
 </tr>
 <tr>
   <td className="font-medium py-2">Total</td>
-  <td className="text-end py-2">{orderData?.data?.totalAmount.toLocaleString('en-IN',{style:'currency',currency:'INR'})}</td>
+  <td className="text-end py-2">{plainOrderData?.totalAmount.toLocaleString('en-IN',{style:'currency',currency:'INR'})}</td>
 </tr>
 
   </tbody>
@@ -157,10 +180,18 @@ const OrderDetails = async ({params}) => {
 
        </div>
         
-        }
+        
         </div>
-    </div>
-  )
+      </div>
+    )
+  } catch (error) {
+    console.error(error)
+    return (
+      <div className="flex justify-center items-center py-32">
+        <h4 className="text-red-500 text-xl font-semibold">Something went wrong</h4>
+      </div>
+    )
+  }
 }
 
 export default OrderDetails
