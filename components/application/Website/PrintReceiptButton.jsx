@@ -9,10 +9,10 @@ const PrintReceiptButton = ({ orderData }) => {
   }
 
   return (
-    <div className="mt-8">
+    <div className="mt-4">
       <CustomButton
         text="Print Receipt"
-        className="w-full md:w-auto flex items-center gap-2 bg-black hover:bg-gray-80 text-white rounded-full px-8 py-3 cursor-pointer"
+        className="w-full rounded-full py-3 text-md flex items-center justify-center gap-2 cursor-pointer"
         onClick={handlePrint}
       >
         <FaPrint size={16} />
