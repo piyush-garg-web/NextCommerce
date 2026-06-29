@@ -94,13 +94,20 @@ const ProductPage = async ({ params, searchParams }) => {
             deletedAt: null
         })
 
+        // Convert Mongoose objects to plain JS objects to fix Next.js server-client prop error
+        const plainProduct = JSON.parse(JSON.stringify(getProduct))
+        const plainVariant = JSON.parse(JSON.stringify(variant))
+        const plainColors = JSON.parse(JSON.stringify(getColor))
+        const plainSizes = getSize.length ? JSON.parse(JSON.stringify(getSize.map(item => item.size))) : []
+        const plainReviewCount = review
+
         return (
             <ProductDetails
-                product={getProduct}
-                variant={variant}
-                colors={getColor}
-                sizes={getSize.length ? getSize.map(item => item.size) : []}
-                reviewCount={review}
+                product={plainProduct}
+                variant={plainVariant}
+                colors={plainColors}
+                sizes={plainSizes}
+                reviewCount={plainReviewCount}
             />
         )
     } catch (error) {
