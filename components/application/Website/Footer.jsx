@@ -13,7 +13,7 @@ import { FiYoutube } from "react-icons/fi";
 import { FaFacebook } from "react-icons/fa";
 const Footer = () => {
   return (
-  <footer className='bg-gray-50 border-t'>
+  <footer className='no-print bg-gray-50 border-t'>
     <div className='grid lg:grid-cols-5 md:grid-cols-2 grid-cols-1 gap-10 py-10 lg:px-32 px-4'>
 
       <div className='lg:col-span-1 md:col-span-2 col-span-1'>

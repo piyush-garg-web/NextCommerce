@@ -30,6 +30,8 @@ const breadCrumb = {
     { label: 'Checkout' }
   ]
 }
+const GST_RATE = 0.18
+
 const Checkout = () => {
   const router=useRouter()
   const dispatch=useDispatch()
@@ -41,6 +43,8 @@ const Checkout = () => {
    const[subtotal,setSubtotal]=useState(0)
     const[discount,setDiscount]=useState(0)
     const [couponDiscountAmount,setCouponDiscountAmount] =useState(0)
+    const [couponDiscountPercentage,setCouponDiscountPercentage] =useState(0)
+    const [taxAmount,setTaxAmount]=useState(0)
     const[totalAmount,setTotalAmount]=useState(0)
     const[couponLoading,setCouponLoading]=useState(false)
     const[couponCode,setCouponCode]=useState('')
@@ -64,13 +68,20 @@ if (getVerifiedCartData && getVerifiedCartData.success) {
     const cartProducts=cart.products
     const subTotalAmount=cartProducts.reduce((sum,product)=>sum+(product.sellingPrice*product.qty),0)
     const discount=cartProducts.reduce((sum,product)=>sum+((product.mrp-product.sellingPrice)*product.qty),0)
+    const afterDiscount=Math.max(subTotalAmount-discount,0)
+    const couponDiscount=Number(((afterDiscount * couponDiscountPercentage) / 100).toFixed(2))
+    const taxableAmount=Math.max(afterDiscount-couponDiscount,0)
+    const tax=Number((taxableAmount * GST_RATE).toFixed(2))
+    const payableAmount=Number((taxableAmount+tax).toFixed(2))
     
     setSubtotal(subTotalAmount)
     setDiscount(discount)
-    setTotalAmount(subTotalAmount)
+    setCouponDiscountAmount(couponDiscount)
+    setTaxAmount(tax)
+    setTotalAmount(payableAmount)
     couponForm.setValue('minShoppingAmount' , subTotalAmount)
     
-      },[cart])
+      },[cart,couponDiscountPercentage])
 
   const couponFormSchema=zschema.pick({
     code:true,
@@ -99,8 +110,7 @@ if (!response.success) {
 
 const discountPercentage=response.data.discountPercentage
 
-setCouponDiscountAmount((subtotal * discountPercentage) / 100)
-setTotalAmount(subtotal-((subtotal * discountPercentage) / 100))
+setCouponDiscountPercentage(discountPercentage)
 showToast('success',response.message) 
 setCouponCode(couponForm.getValues('code'))
 setIsCouponApplied(true)
@@ -116,8 +126,7 @@ couponForm.resetField('code','')
 const removeCoupon=()=>{
   setIsCouponApplied(false)
   setCouponCode('')
-  setCouponDiscountAmount(0)
-  setTotalAmount(subtotal)
+  setCouponDiscountPercentage(0)
 }
 
 
@@ -216,6 +225,7 @@ const {data : paymentResponseData} = await axios.post('/api/payment/save-order',
   subtotal:subtotal,
   discount:discount,
   couponDiscountAmount:couponDiscountAmount,
+  taxAmount:taxAmount,
   totalAmount:totalAmount
 
 })
@@ -502,6 +512,14 @@ showToast('error',error.message)
                       </td>
                       <td className='text-end py-2'>
 - {couponDiscountAmount.toLocaleString('en-IN',{style:'currency',currency:'INR'})}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td className='font-medium py-2'>
+                        GST / Tax (18%)
+                      </td>
+                      <td className='text-end py-2'>
+{taxAmount.toLocaleString('en-IN',{style:'currency',currency:'INR'})}
                       </td>
                     </tr>
                     <tr>

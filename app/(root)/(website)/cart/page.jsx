@@ -19,21 +19,29 @@ const breadCrumb = {
   ]
 }
 
+const GST_RATE = 0.18
 
 const CartPage = () => {
   const dispatch = useDispatch()
   const cart = useSelector(store => store.cartStore)
    const[subtotal,setSubtotal]=useState(0)
   const[discount,setDiscount]=useState(0)
+  const[taxAmount,setTaxAmount]=useState(0)
+  const[totalAmount,setTotalAmount]=useState(0)
  
 
     useEffect(()=>{
   const cartProducts=cart.products
-  const totalAmount=cartProducts.reduce((sum,product)=>sum+(product.sellingPrice*product.qty),0)
+  const subtotal=cartProducts.reduce((sum,product)=>sum+(product.sellingPrice*product.qty),0)
   const discount=cartProducts.reduce((sum,product)=>sum+((product.mrp-product.sellingPrice)*product.qty),0)
+  const taxableAmount=Math.max(subtotal-discount,0)
+  const tax=Number((taxableAmount * GST_RATE).toFixed(2))
+  const payableAmount=Number((taxableAmount+tax).toFixed(2))
   
-  setSubtotal(totalAmount)
+  setSubtotal(subtotal)
   setDiscount(discount)
+  setTaxAmount(tax)
+  setTotalAmount(payableAmount)
   
     },[cart])
 
@@ -145,10 +153,18 @@ const CartPage = () => {
                     </tr>
                     <tr>
                       <td className='font-medium py-2'>
+                        GST / Tax (18%)
+                      </td>
+                      <td className='text-end py-2'>
+{taxAmount.toLocaleString('en-IN',{style:'currency',currency:'INR'})}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td className='font-medium py-2'>
                         Total
                       </td>
                       <td className='text-end py-2'>
-{subtotal.toLocaleString('en-IN',{style:'currency',currency:'INR'})}
+{totalAmount.toLocaleString('en-IN',{style:'currency',currency:'INR'})}
                       </td>
                     </tr>
                   </tbody>

@@ -20,7 +20,7 @@ const Header = () => {
   const [showSearch,setShowSearch]=useState(false)
   const auth=useSelector(store=>store.authStore.auth)
   return (
-    <div className='bg-white border-b lg:px-32 px-4'>
+    <div className='no-print bg-white border-b lg:px-32 px-4'>
       <div className='flex justify-between items-center lg:py-5 py-3'>
         <Link href={WEBSITE_HOME}>
         <Image 

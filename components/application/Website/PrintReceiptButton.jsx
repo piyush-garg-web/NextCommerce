@@ -2,40 +2,74 @@
 import React from 'react'
 import CustomButton from '../CustomButton'
 import { FaPrint } from 'react-icons/fa'
+import Image from 'next/image'
+import logo from '@/public/assets/images/logo-black.png'
 
-const PrintReceiptButton = ({ orderData }) => {
+const PrintReceiptButton = ({
+  orderData,
+  className = '',
+  wrapperClassName = 'mt-4',
+  showButton = true,
+  showReceipt = true,
+}) => {
+  const productsSubtotal = orderData?.product?.reduce(
+    (sum, product) => sum + ((product?.sellingPrice || 0) * (product?.qty || 0)),
+    0
+  ) || 0
+  const productsDiscount = orderData?.product?.reduce(
+    (sum, product) => sum + (((product?.mrp || product?.sellingPrice || 0) - (product?.sellingPrice || 0)) * (product?.qty || 0)),
+    0
+  ) || 0
+  const receiptSubtotal = productsSubtotal || orderData?.subtotal || 0
+  const receiptDiscount = productsDiscount || orderData?.discount || 0
+  const receiptCouponDiscount = orderData?.couponDiscountAmount || 0
+  const receiptTaxableAmount = Math.max(receiptSubtotal - receiptDiscount - receiptCouponDiscount, 0)
+  const receiptTaxAmount = Number((receiptTaxableAmount * 0.18).toFixed(2))
+  const receiptTotalAmount = Number((receiptTaxableAmount + receiptTaxAmount).toFixed(2))
+
   const handlePrint = () => {
+    const currentTitle = document.title
+    document.title = ' '
     window.print()
+    setTimeout(() => {
+      document.title = currentTitle
+    }, 500)
   }
 
   return (
-    <div className="mt-4">
-      <CustomButton
-        text="Print Receipt"
-        className="w-full rounded-full py-3 text-md flex items-center justify-center gap-2 cursor-pointer"
-        onClick={handlePrint}
-      >
-        <FaPrint size={16} />
-      </CustomButton>
+    <div className={wrapperClassName}>
+      {showButton && (
+        <CustomButton
+          text="Print Receipt"
+          className={`w-fit min-w-40 rounded-full px-6 py-3 text-md flex items-center justify-center gap-2 cursor-pointer ${className}`}
+          onClick={handlePrint}
+        >
+          <FaPrint size={16} />
+        </CustomButton>
+      )}
 
-      {/* Hidden print-only section with full receipt details */}
-      <div className="print-only hidden">
-        <div className="p-8 max-w-4xl mx-auto">
-          {/* Header */}
-          <div className="text-center mb-8 border-b pb-4">
-            <h1 className="text-2xl font-bold mb-2">E-Store</h1>
-            <p className="text-gray-600">Order Receipt</p>
+      {/* Hidden print-only section with receipt details */}
+      {showReceipt && (
+        <div className="print-only hidden">
+        <div className="px-8 py-6 max-w-4xl mx-auto text-sm">
+          <div className="mb-5 flex items-center">
+            <Image
+              src={logo}
+              width={383}
+              height={146}
+              alt="E-store"
+              className="w-32 h-auto"
+              priority
+            />
           </div>
 
           {/* Order Info */}
           <div className="mb-6">
-            <h2 className="text-xl font-semibold mb-3">Order Information</h2>
-            <p><b>Order ID:</b> {orderData?.order_id}</p>
-            <p><b>Transaction ID:</b> {orderData?.payment_id}</p>
-            <p><b>Status:</b> {orderData?.status}</p>
-            <p><b>Date:</b> {new Date(orderData?.createdAt || Date.now()).toLocaleDateString('en-IN', {
+            <p><b>Order Id :</b> {orderData?.order_id}</p>
+            <p><b>Transaction Id :</b> {orderData?.payment_id}</p>
+            <p><b>Date & Time :</b> {new Date(orderData?.createdAt || Date.now()).toLocaleString('en-IN', {
               year: 'numeric',
-              month: 'long',
+              month: 'short',
               day: 'numeric',
               hour: '2-digit',
               minute: '2-digit'
@@ -44,7 +78,6 @@ const PrintReceiptButton = ({ orderData }) => {
 
           {/* Products */}
           <div className="mb-6">
-            <h2 className="text-xl font-semibold mb-3">Products</h2>
             <table className="w-full border-collapse border">
               <thead>
                 <tr className="bg-gray-50">
@@ -56,19 +89,23 @@ const PrintReceiptButton = ({ orderData }) => {
               </thead>
               <tbody>
                 {orderData?.product?.map((product) => (
-                  <tr key={product.variantId._id}>
+                  <tr key={product?.variantId?._id}>
                     <td className="border px-3 py-2">
-                      <p className="font-medium">{product.productId.name}</p>
+                      <p className="font-medium">{product?.productId?.name}</p>
+                      <p className="text-sm text-gray-600">Product Id : {product?.productId?._id}</p>
                       <p className="text-sm text-gray-600">
-                        Color: {product.variantId.color}, Size: {product.variantId.size}
+                        Color : {product?.variantId?.color}
+                      </p>
+                      <p className="text-sm text-gray-600">
+                        Size : {product?.variantId?.size}
                       </p>
                     </td>
                     <td className="border px-3 py-2 text-center">
-                      {product.sellingPrice.toLocaleString('en-IN', { style: 'currency', currency: 'INR' })}
+                      {(product?.sellingPrice || 0).toLocaleString('en-IN', { style: 'currency', currency: 'INR' })}
                     </td>
-                    <td className="border px-3 py-2 text-center">{product.qty}</td>
+                    <td className="border px-3 py-2 text-center">{product?.qty}</td>
                     <td className="border px-3 py-2 text-center">
-                      {(product.qty * product.sellingPrice).toLocaleString('en-IN', { style: 'currency', currency: 'INR' })}
+                      {((product?.qty || 0) * (product?.sellingPrice || 0)).toLocaleString('en-IN', { style: 'currency', currency: 'INR' })}
                     </td>
                   </tr>
                 ))}
@@ -76,59 +113,77 @@ const PrintReceiptButton = ({ orderData }) => {
             </table>
           </div>
 
-          {/* Shipping Address */}
-          <div className="mb-6">
-            <h2 className="text-xl font-semibold mb-3">Shipping Address</h2>
-            <p>{orderData?.name}</p>
-            <p>{orderData?.email}</p>
-            <p>{orderData?.phone}</p>
-            <p>{orderData?.landmark ? `${orderData?.landmark}, ` : ''}{orderData?.city}, {orderData?.state}</p>
-            <p>{orderData?.country} - {orderData?.pincode}</p>
-            {orderData?.ordernote && <p><b>Note:</b> {orderData.ordernote}</p>}
-          </div>
-
           {/* Order Summary */}
-          <div className="mb-6 border-t pt-4">
+          <div className="mb-6">
             <h2 className="text-xl font-semibold mb-3">Order Summary</h2>
             <table className="w-full">
               <tbody>
                 <tr>
                   <td className="py-1">Subtotal</td>
-                  <td className="py-1 text-right">{orderData?.subtotal.toLocaleString('en-IN', { style: 'currency', currency: 'INR' })}</td>
+                  <td className="py-1 text-right">{receiptSubtotal.toLocaleString('en-IN', { style: 'currency', currency: 'INR' })}</td>
                 </tr>
                 <tr>
                   <td className="py-1">Discount</td>
-                  <td className="py-1 text-right">- {orderData?.discount.toLocaleString('en-IN', { style: 'currency', currency: 'INR' })}</td>
+                  <td className="py-1 text-right">- {receiptDiscount.toLocaleString('en-IN', { style: 'currency', currency: 'INR' })}</td>
                 </tr>
-                {orderData?.couponDiscountAmount > 0 && (
+                {receiptCouponDiscount > 0 && (
                   <tr>
                     <td className="py-1">Coupon Discount</td>
-                    <td className="py-1 text-right">- {orderData?.couponDiscountAmount.toLocaleString('en-IN', { style: 'currency', currency: 'INR' })}</td>
+                    <td className="py-1 text-right">- {receiptCouponDiscount.toLocaleString('en-IN', { style: 'currency', currency: 'INR' })}</td>
                   </tr>
                 )}
+                <tr>
+                  <td className="py-1">GST / Tax (18%)</td>
+                  <td className="py-1 text-right">{receiptTaxAmount.toLocaleString('en-IN', { style: 'currency', currency: 'INR' })}</td>
+                </tr>
                 <tr className="font-semibold border-t">
                   <td className="py-2">Total</td>
-                  <td className="py-2 text-right">{orderData?.totalAmount.toLocaleString('en-IN', { style: 'currency', currency: 'INR' })}</td>
+                  <td className="py-2 text-right">{receiptTotalAmount.toLocaleString('en-IN', { style: 'currency', currency: 'INR' })}</td>
                 </tr>
               </tbody>
             </table>
           </div>
 
-          {/* Footer */}
-          <div className="text-center mt-8 border-t pt-4 text-gray-600">
-            <p>Thank you for shopping with us!</p>
-            <p>For any queries, please contact support.</p>
+          <div className="mt-8 border-t pt-6 max-w-sm">
+            <Image
+              src={logo}
+              width={383}
+              height={146}
+              alt="E-store"
+              className="w-32 h-auto mb-3"
+              priority
+            />
+            <p className="text-gray-600 leading-6">
+              E-store is your trusted destination for quality and convenience.
+              From fashion to essentials, we bring everything you need right to
+              your doorstep. Shop smart, live better - only at E-store.
+            </p>
           </div>
         </div>
       </div>
+      )}
 
       <style jsx global>{`
         @media print {
-          .print-only {
-            display: block !important;
+          @page {
+            margin: 0;
+          }
+          html,
+          body {
+            margin: 0 !important;
+            padding: 0 !important;
           }
           .no-print {
             display: none !important;
+          }
+          header,
+          footer {
+            display: none !important;
+          }
+          .print-only {
+            display: block !important;
+            width: 100%;
+            background: white;
           }
         }
       `}</style>

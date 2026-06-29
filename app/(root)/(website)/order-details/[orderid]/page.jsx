@@ -39,6 +39,18 @@ const OrderDetails = async ({params}) => {
 
     // Convert Mongoose objects to plain JS objects
     const plainOrderData = JSON.parse(JSON.stringify(orderData))
+    const displaySubtotal = plainOrderData?.product?.reduce(
+      (sum, product) => sum + ((product?.sellingPrice || 0) * (product?.qty || 0)),
+      0
+    ) || 0
+    const displayDiscount = plainOrderData?.product?.reduce(
+      (sum, product) => sum + (((product?.mrp || product?.sellingPrice || 0) - (product?.sellingPrice || 0)) * (product?.qty || 0)),
+      0
+    ) || 0
+    const displayCouponDiscount = plainOrderData?.couponDiscountAmount || 0
+    const displayTaxableAmount = Math.max(displaySubtotal - displayDiscount - displayCouponDiscount, 0)
+    const displayTaxAmount = Number((displayTaxableAmount * 0.18).toFixed(2))
+    const displayTotalAmount = Number((displayTaxableAmount + displayTaxAmount).toFixed(2))
 
     const breadcrumb = {
       title: 'Order Details',
@@ -79,6 +91,7 @@ const OrderDetails = async ({params}) => {
                             <h4 className="text-lg">
                               <Link href={WEBSITE_PRODUCT_DETAILS(product?.productId?.slug)}>{product?.productId?.name}
                               </Link>
+                              <p className="text-sm">Product Id : {product?.productId?._id}</p>
                               <p>Color : {product?.variantId?.color}</p>
                               <p>Size : {product?.variantId?.size}</p>
                             </h4>
@@ -157,37 +170,48 @@ const OrderDetails = async ({params}) => {
                       <tbody>
                         <tr>
                           <td className="font-medium py-2">Subtotal</td>
-                          <td className="text-end py-2">{plainOrderData?.subtotal.toLocaleString('en-IN', { style: 'currency', currency: 'INR' })}</td>
+                          <td className="text-end py-2">{displaySubtotal.toLocaleString('en-IN', { style: 'currency', currency: 'INR' })}</td>
                         </tr>
                         <tr>
                           <td className="font-medium py-2">Discount</td>
-                          <td className="text-end py-2">{plainOrderData?.discount.toLocaleString('en-IN', { style: 'currency', currency: 'INR' })}</td>
+                          <td className="text-end py-2">{displayDiscount.toLocaleString('en-IN', { style: 'currency', currency: 'INR' })}</td>
                         </tr>
                         <tr>
                           <td className="font-medium py-2">Coupon Discount</td>
-                          <td className="text-end py-2">{plainOrderData?.couponDiscountAmount.toLocaleString('en-IN', { style: 'currency', currency: 'INR' })}</td>
+                          <td className="text-end py-2">{displayCouponDiscount.toLocaleString('en-IN', { style: 'currency', currency: 'INR' })}</td>
+                        </tr>
+                        <tr>
+                          <td className="font-medium py-2">GST / Tax (18%)</td>
+                          <td className="text-end py-2">{displayTaxAmount.toLocaleString('en-IN', { style: 'currency', currency: 'INR' })}</td>
                         </tr>
                         <tr>
                           <td className="font-medium py-2">Total</td>
-                          <td className="text-end py-2">{plainOrderData?.totalAmount.toLocaleString('en-IN', { style: 'currency', currency: 'INR' })}</td>
+                          <td className="text-end py-2">{displayTotalAmount.toLocaleString('en-IN', { style: 'currency', currency: 'INR' })}</td>
                         </tr>
 
                       </tbody>
 
                     </table>
+                    <PrintReceiptButton
+                      orderData={plainOrderData}
+                      wrapperClassName="mt-4 flex justify-start"
+                      showReceipt={false}
+                    />
 
                   </div>
                 </div>
               </div>
-
-              {/* Print Receipt Button */}
-              <PrintReceiptButton orderData={plainOrderData} />
 
             </div>
 
 
           </div>
         </div>
+        <PrintReceiptButton
+          orderData={plainOrderData}
+          wrapperClassName=""
+          showButton={false}
+        />
       </div>
     )
   } catch (error) {

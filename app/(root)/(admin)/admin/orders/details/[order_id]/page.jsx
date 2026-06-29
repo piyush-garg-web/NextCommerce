@@ -64,6 +64,18 @@ const OrderDetails = ({ params }) => {
       setUpdatingStatus(false)
     }
   }
+  const displaySubtotal = orderData?.product?.reduce(
+    (sum, product) => sum + ((product?.sellingPrice || 0) * (product?.qty || 0)),
+    0
+  ) || 0
+  const displayDiscount = orderData?.product?.reduce(
+    (sum, product) => sum + (((product?.mrp || product?.sellingPrice || 0) - (product?.sellingPrice || 0)) * (product?.qty || 0)),
+    0
+  ) || 0
+  const displayCouponDiscount = orderData?.couponDiscountAmount || 0
+  const displayTaxableAmount = Math.max(displaySubtotal - displayDiscount - displayCouponDiscount, 0)
+  const displayTaxAmount = Number((displayTaxableAmount * 0.18).toFixed(2))
+  const displayTotalAmount = Number((displayTaxableAmount + displayTaxAmount).toFixed(2))
 
   return (
     <div>
@@ -188,19 +200,23 @@ const OrderDetails = ({ params }) => {
                       <tbody>
                         <tr>
                           <td className="font-medium py-2">Subtotal</td>
-                          <td className="text-end py-2">{orderData?.subtotal.toLocaleString('en-IN', { style: 'currency', currency: 'INR' })}</td>
+                          <td className="text-end py-2">{displaySubtotal.toLocaleString('en-IN', { style: 'currency', currency: 'INR' })}</td>
                         </tr>
                         <tr>
                           <td className="font-medium py-2">Discount</td>
-                          <td className="text-end py-2">{orderData?.discount.toLocaleString('en-IN', { style: 'currency', currency: 'INR' })}</td>
+                          <td className="text-end py-2">{displayDiscount.toLocaleString('en-IN', { style: 'currency', currency: 'INR' })}</td>
                         </tr>
                         <tr>
                           <td className="font-medium py-2">Coupon Discount</td>
-                          <td className="text-end py-2">{orderData?.couponDiscountAmount.toLocaleString('en-IN', { style: 'currency', currency: 'INR' })}</td>
+                          <td className="text-end py-2">{displayCouponDiscount.toLocaleString('en-IN', { style: 'currency', currency: 'INR' })}</td>
+                        </tr>
+                        <tr>
+                          <td className="font-medium py-2">GST / Tax (18%)</td>
+                          <td className="text-end py-2">{displayTaxAmount.toLocaleString('en-IN', { style: 'currency', currency: 'INR' })}</td>
                         </tr>
                         <tr>
                           <td className="font-medium py-2">Total</td>
-                          <td className="text-end py-2">{orderData?.totalAmount.toLocaleString('en-IN', { style: 'currency', currency: 'INR' })}</td>
+                          <td className="text-end py-2">{displayTotalAmount.toLocaleString('en-IN', { style: 'currency', currency: 'INR' })}</td>
                         </tr>
 
                       </tbody>
