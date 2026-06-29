@@ -2,7 +2,8 @@ import WebsiteBreadcrumb from "@/components/application/Website/WebsiteBreadcrum
 import Image from "next/image"
 import imgPlaceholder from '@/public/assets/images/img-placeholder.webp'
 import Link from "next/link"
-import { WEBSITE_PRODUCT_DETAILS } from "@/Routes/website"
+import { Button } from "@/components/ui/button"
+import { WEBSITE_HOME, WEBSITE_PRODUCT_DETAILS } from "@/Routes/website"
 import { connectToDB } from "@/lib/dbconnection"
 import OrderModel from "@/models/Order.model"
 import PrintReceiptButton from "@/components/application/Website/PrintReceiptButton"
@@ -188,15 +189,30 @@ const OrderDetails = async ({params}) => {
                           <td className="font-medium py-2">Total</td>
                           <td className="text-end py-2">{displayTotalAmount.toLocaleString('en-IN', { style: 'currency', currency: 'INR' })}</td>
                         </tr>
+                        <tr>
+                          <td className="pt-3 align-top">
+                            <PrintReceiptButton
+                              orderData={plainOrderData}
+                              wrapperClassName=""
+                              showReceipt={false}
+                            />
+                          </td>
+                          <td className="pt-3">
+                            <div className="flex justify-end">
+                              <Button
+                                className="w-fit min-w-40 rounded-full px-6 py-3 text-md flex items-center justify-center gap-2 cursor-pointer"
+                                type="button"
+                                asChild
+                              >
+                                <Link href={WEBSITE_HOME}>Go to Home</Link>
+                              </Button>
+                            </div>
+                          </td>
+                        </tr>
 
                       </tbody>
 
                     </table>
-                    <PrintReceiptButton
-                      orderData={plainOrderData}
-                      wrapperClassName="mt-4 flex justify-start"
-                      showReceipt={false}
-                    />
 
                   </div>
                 </div>
