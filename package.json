@@ -1,7 +1,31 @@
 {
-  "name": "e-commerce",
-  "version": "0.1.0",
-  "private": true,
+  "name": "nextjs-mongodb-ecommerce",
+  "version": "1.0.0",
+  "description": "A production-grade, full-stack e-commerce platform built with Next.js 15+, MongoDB, Mongoose, and Razorpay. Features a comprehensive admin dashboard, variant-level inventory management, custom JWT auth, soft-delete recovery system, and email alerts.",
+  "private": false,
+  "author": "Piyush Garg <piyushgarg6702@gmail.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/piyushgarg6702-cyber/e-commerce#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/piyushgarg6702-cyber/e-commerce.git"
+  },
+  "bugs": {
+    "url": "https://github.com/piyushgarg6702-cyber/e-commerce/issues"
+  },
+  "keywords": [
+    "nextjs",
+    "react",
+    "mongodb",
+    "mongoose",
+    "razorpay",
+    "tailwindcss",
+    "ecommerce",
+    "admin-dashboard",
+    "redux-toolkit",
+    "nodemailer",
+    "cloudinary"
+  ],
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
