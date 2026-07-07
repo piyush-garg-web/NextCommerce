@@ -3,7 +3,7 @@
 A production-grade full-stack e-commerce platform with customer storefront, advanced admin dashboard, secure payments, inventory management, and scalable architecture.
 
 <p align="center">
-  <a href="https://nextjs.org/"><img src="https://img.shields.io/badge/Next.js-15+-000000?style=for-the-badge&logo=next.js&logoColor=white" alt="Next.js" /></a>
+  <a href="https://nextjs.org/"><img src="https://img.shields.io/badge/Next.js-16+-000000?style=for-the-badge&logo=next.js&logoColor=white" alt="Next.js" /></a>
   <a href="https://react.dev/"><img src="https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react&logoColor=black" alt="React" /></a>
   <a href="https://nodejs.org/"><img src="https://img.shields.io/badge/Node.js-20+-339933?style=for-the-badge&logo=node.js&logoColor=white" alt="Node.js" /></a>
   <a href="https://www.mongodb.com/"><img src="https://img.shields.io/badge/MongoDB-Atlas-47A248?style=for-the-badge&logo=mongodb&logoColor=white" alt="MongoDB" /></a>
@@ -33,7 +33,7 @@ A production-grade full-stack e-commerce platform with customer storefront, adva
 
 NextCommerce is a high-performance, production-grade full-stack e-commerce platform built to solve complex real-world retail workflows. Leveraging Next.js App Router, React 19, and MongoDB Atlas, it integrates a client-facing storefront with a comprehensive admin dashboard.
 
-The project features a responsive shopping catalog with server-validated shopping carts, promotional coupons, real-time search index filters, and multi-option checkout via the Razorpay payment gateway. For administrators, NextCommerce offers aggregated analytics charts, media resource managers, dynamic color-and-size inventory variant sheets, review moderators, and a trash soft-delete system.
+The project features a responsive shopping catalog with server-validated shopping carts, promotional coupons, client-side fuzzy search, and multi-option checkout via the Razorpay payment gateway. For administrators, NextCommerce offers aggregated analytics charts, media resource managers, dynamic color-and-size inventory variant sheets, review moderators, and a trash soft-delete system.
 
 ---
 
@@ -101,12 +101,12 @@ Here are visual previews of the storefront and checkout screens:
 ## ⚙️ Features
 
 ### 🛍️ Customer Storefront
-- **Registration/Login**: Custom user setup.
-- **OTP Verification**: Email-verified registration paths.
+- **Registration/Login**: User account creation and authentication.
+- **OTP Verification**: Email-based account verification.
 - **JWT Authentication**: Secure stateless cookie tracking.
 - **Product Catalog**: High-performance category browsing.
 - **Fuse.js Fuzzy Search**: Instant client-side search matches.
-- **Filters**: Sift items by category, price, size, and color.
+- **Filters**: Filter products by category, price, size, and color.
 - **Sorting**: Order by price, name, or date.
 - **Redux Persist Cart**: Persistent cart storage in the browser.
 - **Coupons**: Apply promotional discount codes.
@@ -290,10 +290,10 @@ RAZORPAY_KEY_SECRET="..."
 - **Secure and SameSite Cookie Settings**: Sessions are strictly scoped to the host domain.
 - **JWT Verification Middleware**: Intercepts requests on protected route groups before rendering or API access.
 - **Jose Token Validation**: Edge-compatible JWT extraction and validation.
-- **Bcrypt Password Hashing**: Hashing algorithm executed pre-save via Mongoose triggers to protect user passphrases.
+- **Bcrypt Password Hashing**: Hashing algorithm executed pre-save via Mongoose triggers to protect user passwords.
 - **Zod Validation**: Input payload validation on both frontend forms and backend REST controllers.
 - **NoSQL Injection Prevention**: Escapes query operators to block arbitrary server injections.
-- **Razorpay Signature Verification**: Encrypts callback payloads via HMAC-SHA256 matching Razorpay Webhook protocols.
+- **Razorpay Signature Verification**: Verifies payment callback signatures using HMAC-SHA256 to match Razorpay webhook protocols.
 
 ---
 
