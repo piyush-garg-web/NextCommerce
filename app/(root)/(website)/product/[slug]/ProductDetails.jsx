@@ -11,6 +11,8 @@ import { WEBSITE_CART, WEBSITE_PRODUCT_DETAILS, WEBSITE_SHOP } from "@/routes/we
 import Image from "next/image"
 import Link from "next/link"
 import { useEffect, useState } from "react"
+import { useRouter, usePathname } from "next/navigation"
+import { WEBSITE_LOGIN } from "@/routes/website"
 import imgPlaceholder from '@/public/assets/images/img-placeholder.webp'
 import { FaStar } from "react-icons/fa6";
 import { decode, encode } from "entities"
@@ -29,6 +31,9 @@ const ProductDetails = ({ product, variant, colors, sizes, reviewCount }) => {
 
     const dispatch = useDispatch()
     const cartStore = useSelector(store => store.cartStore)
+    const authStore = useSelector(store => store.authStore)
+    const router = useRouter()
+    const pathname = usePathname()
     const [activeThumb, setActiveThumb] = useState(imgPlaceholder.src)
     const [qty, setQty] = useState(1)
     const [isAddedIntoCart, setIsAddedIntoCart] = useState(false)
@@ -71,6 +76,12 @@ const ProductDetails = ({ product, variant, colors, sizes, reviewCount }) => {
 
     const handleAddToCart = () => {
         if (!product || !variant) return
+
+        if (!authStore.auth) {
+          showToast('error', 'Please login to add items to your cart')
+          router.push(`${WEBSITE_LOGIN}?callback=${encodeURIComponent(pathname)}`)
+          return
+        }
         
         const cartProduct = {
             productId: product._id,

@@ -10,7 +10,9 @@ export async function middleware(request) {
 
         if (!hasToken) {
             if (!pathname.startsWith('/auth')) {
-                return NextResponse.redirect(new URL(WEBSITE_LOGIN, request.nextUrl))
+                const url = new URL(WEBSITE_LOGIN, request.nextUrl)
+                url.searchParams.set('callback', pathname)
+                return NextResponse.redirect(url)
         }
 
         return NextResponse.next() }
@@ -20,7 +22,10 @@ export async function middleware(request) {
 
         const role=payload.role
         if (pathname.startsWith('/auth')) {
-            return NextResponse.redirect(new URL(role==='admin' ? ADMIN_DASHBOARD:USER_DASHBOARD, request.nextUrl)) }
+            const callbackUrl = request.nextUrl.searchParams.get('callback')
+            const redirectUrl = callbackUrl ? new URL(callbackUrl, request.nextUrl) : new URL(role==='admin' ? ADMIN_DASHBOARD:USER_DASHBOARD, request.nextUrl)
+            return NextResponse.redirect(redirectUrl)
+        }
  
             if (pathname.startsWith('/admin') && role!=='admin') {
                 return NextResponse.redirect(new URL(WEBSITE_LOGIN, request.nextUrl))
@@ -39,5 +44,5 @@ export async function middleware(request) {
 }
 
 export const config = {
-    matcher: ['/myaccount/:path*', '/admin/:path*', '/auth/:path*']
+    matcher: ['/myaccount/:path*', '/admin/:path*', '/auth/:path*', '/checkout/:path*', '/orders/:path*', '/order-details/:path*', '/profile/:path*']
 }

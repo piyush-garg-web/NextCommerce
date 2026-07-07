@@ -1,6 +1,7 @@
 import { orderNotification } from "@/email/orderNotification";
 import { connectToDB } from '@/lib/dbConnection.js';
 import { catchError, response } from '@/lib/helperFunctions.js';
+import { isAuthenticated } from "@/lib/authentication";
 import { sendMail } from "@/lib/sendMail";
 import { zschema } from '@/lib/zodSchema.js';
 import OrderModel from "@/models/Order.model";
@@ -10,6 +11,10 @@ import z from "zod";
 export async function POST (request) {
     try {
 await connectToDB()
+const auth = await isAuthenticated('user')
+if (!auth.isAuth) {
+    return response (false,402,'Unauthorized')
+}
 const payload=await request.json()
 
 const productSchema = z.object({
@@ -60,7 +65,7 @@ if (verification) {
 }
 
  const newOrder= await OrderModel.create({
-user :validatedData.userId,
+user :auth.userId, // use authenticated user ID instead of payload
 name :validatedData.name,
 email :validatedData.email,
 phone :validatedData.phone,

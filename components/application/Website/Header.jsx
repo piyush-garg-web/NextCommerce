@@ -1,24 +1,44 @@
 'use client'
-import { USER_DASHBOARD, WEBSITE_HOME, WEBSITE_LOGIN, WEBSITE_SHOP } from '@/routes/website'
+import { USER_DASHBOARD, WEBSITE_HOME, WEBSITE_LOGIN, WEBSITE_SHOP, USER_ORDERS } from '@/routes/website'
 import Image from 'next/image'
 import Link from 'next/link'
 import React, { useState } from 'react'
 import logo from '@/public/assets/images/logo-black.png'
-import { FaSearch } from "react-icons/fa";
+import { FaSearch, FaSignOutAlt, FaBox } from "react-icons/fa";
 import Cart from './Cart'
 import { VscAccount } from "react-icons/vsc";
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Avatar, AvatarImage } from '@/components/ui/avatar'
 import userIcon from '@/public/assets/images/user.png'
 import { FaBars } from "react-icons/fa6";
 import { IoMdClose } from "react-icons/io";
 import Search from './Search'
+import axios from 'axios'
+import { showToast } from '@/lib/showToast'
+import { logout } from '@/store/reducer/authReducer'
+import { useRouter } from 'next/navigation'
 
 
 const Header = () => {
   const [isMobileMenu,setIsMobileMenu]=useState(false)
   const [showSearch,setShowSearch]=useState(false)
+  const [isUserMenuOpen, setIsUserMenuOpen] = useState(false)
   const auth=useSelector(store=>store.authStore.auth)
+  const dispatch = useDispatch()
+  const router = useRouter()
+
+  const handleLogout = async () => {
+    try {
+      await axios.post('/api/auth/logout')
+      dispatch(logout())
+      setIsUserMenuOpen(false)
+      showToast('success', 'Logged out successfully')
+      router.push('/')
+    } catch (error) {
+      showToast('error', error.message)
+    }
+  }
+
   return (
     <div className='no-print bg-white border-b lg:px-32 px-4'>
       <div className='flex justify-between items-center lg:py-5 py-3'>
@@ -50,6 +70,7 @@ const Header = () => {
   size={25}
   className='text-gray-500 hover:text-primary' />
 </button>
+
 
 
 
@@ -98,11 +119,43 @@ size={25} />
 className='text-gray-500 hover:text-primary cursor-pointer'
 size={25} />
 </Link> :
-<Link href={USER_DASHBOARD} >
-<Avatar>
-  <AvatarImage src={auth?.avatar?.url ||  userIcon.src } /></Avatar>
-</Link>
+<div className='relative'>
+  <button type='button' onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}>
+    <Avatar>
+      <AvatarImage src={auth?.avatar?.url ||  userIcon.src } />
+    </Avatar>
+  </button>
+  {isUserMenuOpen && (
+    <div className='absolute right-0 mt-2 w-48 bg-white border rounded-lg shadow-lg z-50'>
+      <Link 
+        href={USER_DASHBOARD} 
+        className='flex items-center gap-2 px-4 py-2 hover:bg-gray-100' 
+        onClick={() => setIsUserMenuOpen(false)}
+      >
+        <VscAccount size={16} />
+        My Account
+      </Link>
+      <Link 
+        href={USER_ORDERS} 
+        className='flex items-center gap-2 px-4 py-2 hover:bg-gray-100' 
+        onClick={() => setIsUserMenuOpen(false)}
+      >
+        <FaBox size={16} />
+        Orders
+      </Link>
+      <button 
+        type='button' 
+        className='flex items-center gap-2 px-4 py-2 hover:bg-gray-100 w-full text-left' 
+        onClick={handleLogout}
+      >
+        <FaSignOutAlt size={16} />
+        Logout
+      </button>
+    </div>
+  )}
+</div>
 }
+
 
 
 <button type='button' className='lg:hidden block' onClick={()=>setIsMobileMenu(true)}>

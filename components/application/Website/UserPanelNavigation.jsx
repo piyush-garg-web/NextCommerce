@@ -7,15 +7,23 @@ import { IoSettingsOutline } from "react-icons/io5";
 import { useRouter } from 'next/navigation'
 import { useDispatch, useSelector } from 'react-redux'
 import { logout } from '@/store/reducer/authReducer'
+import axios from 'axios'
+import { showToast } from '@/lib/showToast'
 
 const UserPanelNavigation = () => {
   const router = useRouter()
   const dispatch = useDispatch()
   const auth = useSelector(store => store.authStore.auth)
 
-  const handleLogout = () => {
-    dispatch(logout())
-    router.push('/')
+  const handleLogout = async () => {
+    try {
+      await axios.post('/api/auth/logout')
+      dispatch(logout())
+      showToast('success', 'Logged out successfully')
+      router.push('/')
+    } catch (error) {
+      showToast('error', error.message)
+    }
   }
 
   return (
