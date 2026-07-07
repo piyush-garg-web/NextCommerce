@@ -1,10 +1,15 @@
 import { connectToDB } from '@/lib/dbConnection.js';
 import { catchError, response } from '@/lib/helperFunctions.js';
+import { isAuthenticated } from '@/lib/authentication';
 import { zschema } from '@/lib/zodSchema.js';
 import CouponModel from "@/models/Coupon.model";
 
 export async function POST(request) {
     try {
+        const auth = await isAuthenticated('user')
+        if (!auth.isAuth) {
+            return response (false,402,'Unauthorized')
+        }
 
         await connectToDB()
         const payload=await request.json()

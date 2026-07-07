@@ -15,17 +15,17 @@ export async function POST(request) {
 
         await connectToDB()
         const payload= await request.json()
-        const schema = zschema.pick({ product: true, userId: true, rating: true, title: true,
+        const schema = zschema.pick({ product: true, rating: true, title: true,
         review: true})
 
         const validate= schema.safeParse(payload)
 if (!validate.success) {  
     return response(false,400,"Invlaid or missing fields",validate.error)
  }
-const {product,userId,rating,title,review}=validate.data
+const {product,rating,title,review}=validate.data
  const newReview= new ReviewModel({
     product:product,
-    user:userId,
+    user:auth.userId,
     rating:rating,
     title:title,
     review:review,

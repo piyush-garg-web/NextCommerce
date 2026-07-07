@@ -7,7 +7,7 @@ import { Input } from '@/components/ui/input'
 import useFetch from '@/hooks/useFetch'
 import { showToast } from '@/lib/showToast'
 import { zschema } from '@/lib/zodSchema'
-import { WEBSITE_ORDER_DETAILS, WEBSITE_PRODUCT_DETAILS, WEBSITE_SHOP } from '@/routes/website'
+import { WEBSITE_ORDER_DETAILS, WEBSITE_PRODUCT_DETAILS, WEBSITE_SHOP, WEBSITE_LOGIN } from '@/routes/website'
 import { addIntoCart, clearCart } from '@/store/reducer/cartReducer'
 import { zodResolver } from '@hookform/resolvers/zod'
 import axios from 'axios'
@@ -21,7 +21,7 @@ import { FaShippingFast } from 'react-icons/fa'
 import z from 'zod'
 import { Textarea } from '@/components/ui/textarea'
 import Script from 'next/script'
-import { useRouter } from 'next/navigation'
+import { useRouter, usePathname } from 'next/navigation'
 import loading from '@/public/assets/images/loading.svg'
 
 const breadCrumb = {
@@ -37,6 +37,7 @@ const Checkout = () => {
   const dispatch=useDispatch()
   const cart = useSelector(store => store.cartStore)
   const authStore = useSelector(store => store.authStore)
+  const pathname = usePathname()
   const [verifiedCartData,setVerifiedCartData]=useState([])
   const {data:getVerifiedCartData}=useFetch('/api/cart-verification','POST',{data:cart.products})
   const[isCouponApplied,setIsCouponApplied]=useState(false)
@@ -50,6 +51,14 @@ const Checkout = () => {
     const[couponCode,setCouponCode]=useState('')
     const [placingOrder,setPlacingOrder]=useState(false)
     const [savingOrder,setSavingOrder]=useState(false)
+
+  useEffect(()=>{
+    if (!authStore.auth) {
+      showToast('error', 'Please login to continue checkout')
+      router.push(`${WEBSITE_LOGIN}?callback=${encodeURIComponent(pathname)}`)
+      return
+    }
+  }, [authStore.auth, router, pathname])
 
   useEffect(()=>{
 if (getVerifiedCartData && getVerifiedCartData.success) {

@@ -114,10 +114,9 @@ size={25} />
 </button>
 <Cart />
 {!auth ?
-<Link href={WEBSITE_LOGIN} >
-<VscAccount
-className='text-gray-500 hover:text-primary cursor-pointer'
-size={25} />
+<Link href={WEBSITE_LOGIN} className='flex items-center gap-2 text-gray-600 hover:text-primary font-semibold'>
+  <VscAccount size={20} />
+  <span>Sign Up</span>
 </Link> :
 <div className='relative'>
   <button type='button' onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}>

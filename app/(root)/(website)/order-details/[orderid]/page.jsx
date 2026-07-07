@@ -3,8 +3,9 @@ import Image from "next/image"
 import imgPlaceholder from '@/public/assets/images/img-placeholder.webp'
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { WEBSITE_HOME, WEBSITE_PRODUCT_DETAILS } from "@/routes/website"
+import { WEBSITE_HOME, WEBSITE_PRODUCT_DETAILS, USER_ORDERS } from "@/routes/website"
 import { connectToDB } from "@/lib/dbConnection"
+import { isAuthenticated } from "@/lib/authentication"
 import OrderModel from "@/models/Order.model"
 import PrintReceiptButton from "@/components/application/Website/PrintReceiptButton"
 
@@ -13,6 +14,15 @@ const OrderDetails = async ({params}) => {
     const {orderid} = await params
     
     await connectToDB()
+    
+    const auth = await isAuthenticated('user')
+    if (!auth.isAuth) {
+      return (
+        <div className="flex justify-center items-center py-32">
+          <h4 className="text-red-500 text-xl font-semibold">Unauthorized - Please login to view order details</h4>
+        </div>
+      )
+    }
 
     if (!orderid) {
       return (
@@ -22,7 +32,7 @@ const OrderDetails = async ({params}) => {
       )
     }
 
-    const orderData = await OrderModel.findOne({order_id:orderid})
+    const orderData = await OrderModel.findOne({order_id:orderid, user: auth.userId})
       .populate('product.productId', 'name slug')
       .populate({
         path: 'product.variantId',
@@ -204,7 +214,7 @@ const OrderDetails = async ({params}) => {
                                 type="button"
                                 asChild
                               >
-                                <Link href={WEBSITE_HOME}>Go to Home</Link>
+                                <Link href={USER_ORDERS}>My Orders</Link>
                               </Button>
                             </div>
                           </td>

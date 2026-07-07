@@ -1,11 +1,16 @@
 import { connectToDB } from '@/lib/dbConnection.js';
 import { catchError, response } from '@/lib/helperFunctions.js';
+import { isAuthenticated } from '@/lib/authentication';
 import { zschema } from '@/lib/zodSchema.js';
 import Razorpay from "razorpay";
 
 export async function POST (request) {
     try {
 await connectToDB()
+const auth = await isAuthenticated('user')
+if (!auth.isAuth) {
+    return response (false,402,'Unauthorized')
+}
 const payload= await request.json()
 const schema=zschema.pick({
     amount:true

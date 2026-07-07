@@ -1,11 +1,13 @@
 'use client'
 import WebsiteBreadcrumb from '@/components/application/Website/WebsiteBreadcrumb'
 import { Button } from '@/components/ui/button'
-import { WEBSITE_CHECKOUT, WEBSITE_PRODUCT_DETAILS, WEBSITE_SHOP } from '@/routes/website'
+import { WEBSITE_CHECKOUT, WEBSITE_PRODUCT_DETAILS, WEBSITE_SHOP, WEBSITE_LOGIN } from '@/routes/website'
 import Image from 'next/image'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { useRouter, usePathname } from 'next/navigation'
+import { showToast } from '@/lib/showToast'
 import imgPlaceholder from '@/public/assets/images/img-placeholder.webp'
 import { FaMinus } from "react-icons/fa";
 import { FaPlus } from "react-icons/fa";
@@ -24,6 +26,16 @@ const GST_RATE = 0.18
 const CartPage = () => {
   const dispatch = useDispatch()
   const cart = useSelector(store => store.cartStore)
+  const authStore = useSelector(store => store.authStore)
+  const router = useRouter()
+  const pathname = usePathname()
+
+  useEffect(() => {
+    if (cart.count > 0 && !authStore.auth) {
+      showToast('error', 'Please login to view your cart')
+      router.push(`${WEBSITE_LOGIN}?callback=${encodeURIComponent(pathname)}`)
+    }
+  }, [authStore.auth, cart.count, router, pathname])
    const[subtotal,setSubtotal]=useState(0)
   const[discount,setDiscount]=useState(0)
   const[taxAmount,setTaxAmount]=useState(0)
