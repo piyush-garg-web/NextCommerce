@@ -45,7 +45,7 @@ The project features a responsive shopping catalog with server-validated shoppin
 - **Variant-Level Inventory Management**: Color, size, and pricing matrices assigned individually per variant SKU.
 - **Razorpay Payment Integration**: Full support for cards, Netbanking, and UPI, including server-side signature verifications.
 - **Admin Analytics Dashboard**: Dynamic chart controls tracking business growth KPIs.
-- **Cloudinary Media Management**: மத்திய controls to host and clean CDN resources.
+- **Cloudinary Media Management**: Central controls to host and clean CDN resources.
 - **Soft Delete Recovery System**: Staging trash folders to recover categories, products, or reviews.
 
 ---
@@ -54,7 +54,7 @@ The project features a responsive shopping catalog with server-validated shoppin
 
 Building a typical shopping cart is straightforward. However, resolving the challenges of a production-level platform requires addressing complex real-world engineering hurdles:
 
-1. **Transaction Integrity and Server-Side Stock Validation**: Prevents clients from tempering with cart checkout pricing. NextCommerce checks values against the database before initiating Razorpay invoices.
+1. **Transaction Integrity and Server-Side Stock Validation**: Prevents clients from tampering with cart checkout pricing. NextCommerce checks values against the database before initiating Razorpay invoices.
 2. **Variant-Based Product Modeling**: Models products that have hundreds of color-size combinations, each with distinct pricing tables, images, stock counts, and SKUs.
 3. **Database Recovery Using Soft Delete**: Prevents catastrophic cascading database errors when category paths are deleted, staging items in a trash heap for easy recovery.
 4. **Secure Authentication Architecture**: Restricts API calls and routes server-side using edge-optimized JWT cookies and Next.js middleware.
@@ -120,7 +120,7 @@ Here are visual previews of the storefront and checkout screens:
 - **Inventory Control**: Track and restock variant counts.
 - **Category Management**: Edit category grouping schemas.
 - **Coupon Management**: Configurable promo codes, thresholds, and expiries.
-- **Cloudinary Media Management**: zentral repository dashboard for uploaded media assets.
+- **Cloudinary Media Management**: Central repository dashboard for uploaded media assets.
 - **Review Moderation**: Approve or discard product feedback.
 - **Soft Delete Trash Recovery**: Restore accidentally deleted records.
 
