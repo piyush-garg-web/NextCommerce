@@ -26,6 +26,9 @@ import Link from 'next/link'
 import { WEBSITE_LOGIN } from "@/routes/website"
 import axios from 'axios'
 import { showToast } from '@/lib/showToast'
+import { signIn } from "next-auth/react"
+import { FcGoogle } from "react-icons/fc"
+
 
 
 
@@ -64,7 +67,7 @@ const RegisterPage = () => {
         }
     }
     return (
-        <Card className='w-[400px] h-[575px]'>
+        <Card className='w-[400px]'>
             <CardContent> <div className='flex justify-center'> <Image src={Logo.src} width={Logo.width} height={Logo.height} alt='Logo' className='max-w-[150px]' />
             </div>
                 <div className='text-center'>
@@ -148,7 +151,24 @@ const RegisterPage = () => {
                                     <Link href={WEBSITE_LOGIN} className="text-primary underline">Login here</Link> </div>
                             </div>
                         </form>
-                    </Form></div></CardContent>
+                    </Form>
+                    <div className="flex items-center my-6">
+                        <div className="flex-grow border-t border-gray-300"></div>
+                        <span className="mx-4 text-sm text-gray-500 font-medium">Or</span>
+                        <div className="flex-grow border-t border-gray-300"></div>
+                    </div>
+                    <div className="flex justify-center">
+                        <Button
+                            type="button"
+                            onClick={() => signIn("google")}
+                            variant="outline"
+                            className="w-full flex items-center justify-center gap-2 border-gray-300 py-6 hover:bg-gray-50 transition duration-200 cursor-pointer"
+                        >
+                            <FcGoogle size={22} />
+                            <span className="font-semibold text-gray-700">Continue with Google</span>
+                        </Button>
+                    </div>
+                    </div></CardContent>
         </Card>
     )
 }

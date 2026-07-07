@@ -22,9 +22,14 @@ const userSchema = new mongoose.Schema({
     },
     password: {
         type: String,
-        required: true,
+        required: false,
         trim: true,
         select: false
+    },
+    provider: {
+        type: String,
+        default: 'credentials',
+        enum: ['credentials', 'google']
     },
     avatar: {
         url: {

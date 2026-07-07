@@ -34,6 +34,9 @@ import { useSearchParams } from "next/navigation"
 import { useRouter } from "next/navigation"
 import { ADMIN_DASHBOARD} from "@/routes/adminpanel"
 import { USER_DASHBOARD } from "@/routes/website"
+import { signIn } from "next-auth/react"
+import { FcGoogle } from "react-icons/fc"
+
 
 
 const LoginPage = () => {
@@ -159,7 +162,24 @@ const [otpVerificationLoading, setOtpVerificationLoading] = useState(false);
                             <div className="text-center mt-1.5"><Link href={WEBSITE_RESET_PASSWORD} className="text-primary underline">Forgot password ? </Link>
                                 </div></div>
                         </form>
-                    </Form></div></> :
+                    </Form>
+                    <div className="flex items-center my-6">
+                        <div className="flex-grow border-t border-gray-300"></div>
+                        <span className="mx-4 text-sm text-gray-500 font-medium">Or</span>
+                        <div className="flex-grow border-t border-gray-300"></div>
+                    </div>
+                    <div className="flex justify-center">
+                        <Button
+                            type="button"
+                            onClick={() => signIn("google")}
+                            variant="outline"
+                            className="w-full flex items-center justify-center gap-2 border-gray-300 py-6 hover:bg-gray-50 transition duration-200 cursor-pointer"
+                        >
+                            <FcGoogle size={22} />
+                            <span className="font-semibold text-gray-700">Continue with Google</span>
+                        </Button>
+                    </div>
+                    </div></> :
             <OTPVerification email={otpEmail} onSubmit={handleOtpVerification} loading={otpVerificationLoading} /> }
                 </CardContent>
         </Card>

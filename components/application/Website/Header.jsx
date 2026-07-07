@@ -6,7 +6,6 @@ import React, { useState } from 'react'
 import logo from '@/public/assets/images/logo-black.png'
 import { FaSearch, FaSignOutAlt, FaBox } from "react-icons/fa";
 import Cart from './Cart'
-import { VscAccount } from "react-icons/vsc";
 import { useDispatch, useSelector } from 'react-redux'
 import { Avatar, AvatarImage } from '@/components/ui/avatar'
 import userIcon from '@/public/assets/images/user.png'
@@ -126,10 +125,6 @@ size={25} />
 <Cart />
 {!auth ?
 <div className='flex items-center gap-3'>
-  <Link href={WEBSITE_LOGIN} className='flex items-center gap-2 text-gray-600 hover:text-primary font-semibold'>
-    <VscAccount size={20} />
-    <span>Login</span>
-  </Link>
   <Link href={WEBSITE_REGISTER} className='flex items-center gap-2 text-gray-600 hover:text-primary font-semibold'>
     <span>Sign Up</span>
   </Link>
