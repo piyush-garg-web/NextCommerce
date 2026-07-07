@@ -2,7 +2,7 @@
 import { connectToDB } from '@/lib/dbConnection.js';
 import { response } from '@/lib/helperFunctions.js';
 import CategoryModel from "@/models/Category.model";
-import MediaModel from "@/models/mediamodel";
+import MediaModel from "@/models/MediaModel";
 import ProductModel from "@/models/Product.model";
 import ProductVariantModel from "@/models/ProductVariant.model";
 import { faker } from "@faker-js/faker";

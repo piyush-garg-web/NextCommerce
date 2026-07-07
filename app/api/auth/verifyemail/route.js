@@ -1,5 +1,5 @@
 import { connectToDB } from '@/lib/dbConnection.js';
-import UserModel from "@/models/user.model";
+import UserModel from "@/models/UserModel";
 import { response, catchError } from '@/lib/helperFunctions.js';
 import { jwtVerify } from "jose";
 

@@ -2,7 +2,7 @@ import { isAuthenticated } from "@/lib/authentication";
 import { connectToDB } from '@/lib/dbConnection.js';
 import { catchError, response } from '@/lib/helperFunctions.js';
 import OrderModel from "@/models/Order.model";
-import MediaModel from "@/models/mediamodel";
+import MediaModel from "@/models/MediaModel";
 import ProductModel from "@/models/Product.model";
 import ProductVariantModel from "@/models/ProductVariant.model";
 

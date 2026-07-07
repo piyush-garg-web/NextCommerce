@@ -1,7 +1,7 @@
 import { isAuthenticated } from "@/lib/authentication";
 import { connectToDB } from '@/lib/dbConnection.js';
 import { catchError,response } from '@/lib/helperFunctions.js';
-import MediaModel from "@/models/mediamodel";
+import MediaModel from "@/models/MediaModel";
 import { NextResponse } from "next/server";
 
 export async function GET(request) {

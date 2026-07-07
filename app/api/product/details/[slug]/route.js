@@ -3,7 +3,7 @@ import { catchError,response } from "@/lib/helperFunctions";
 import ProductModel from "@/models/Product.model";
 import ProductVariantModel from "@/models/ProductVariant.model";
 import ReviewModel from "@/models/Review.model";
-import MediaModel from "@/models/mediamodel";
+import MediaModel from "@/models/MediaModel";
 
 export async function GET(request,{params}) {
     try {

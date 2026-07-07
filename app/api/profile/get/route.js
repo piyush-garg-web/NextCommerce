@@ -1,7 +1,7 @@
 import { isAuthenticated } from "@/lib/authentication";
 import { connectToDB } from '@/lib/dbConnection.js';
 import { catchError, response } from '@/lib/helperFunctions.js';
-import UserModel from "@/models/user.model";
+import UserModel from "@/models/UserModel";
 
 export async function GET() {
     try{

@@ -1,6 +1,6 @@
 import { connectToDB } from '@/lib/dbConnection';
 import ProductModel from '@/models/Product.model';
-import MediaModel from '@/models/mediamodel';
+import MediaModel from '@/models/MediaModel';
 import Link from 'next/link'
 import React from 'react'
 import { FaArrowRight } from "react-icons/fa6";

@@ -2,7 +2,7 @@ import { isAuthenticated } from "@/lib/authentication";
 import { connectToDB } from "@/lib/dbConnection";
 import { catchError,response } from "@/lib/helperFunctions";
 import { isValidObjectId } from "mongoose";
-import MediaModel from "@/models/mediamodel";
+import MediaModel from "@/models/MediaModel";
 import ProductVariantModel from "@/models/ProductVariant.model";
 
 export async function GET(request,{params}) {

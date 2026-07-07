@@ -2,7 +2,7 @@ import { isAuthenticated } from "@/lib/authentication";
 import { connectToDB } from '@/lib/dbConnection.js';
 import { catchError,response } from '@/lib/helperFunctions.js';
 import { zschema } from '@/lib/zodSchema.js';
-import MediaModel from "@/models/mediamodel";
+import MediaModel from "@/models/MediaModel";
 import { isValidObjectId } from "mongoose";
 
 export async function PUT(request) {

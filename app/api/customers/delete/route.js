@@ -2,7 +2,7 @@ import { connectToDB } from '@/lib/dbConnection.js';
 import { catchError,response } from '@/lib/helperFunctions.js';
 import mongoose from "mongoose"
 import { isAuthenticated } from "@/lib/authentication";
-import UserModel from "@/models/user.model";
+import UserModel from "@/models/UserModel";
 
 export async function PUT(request) {
     try {

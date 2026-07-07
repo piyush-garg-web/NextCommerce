@@ -1,6 +1,6 @@
 import { connectToDB } from '@/lib/dbConnection.js';
 import { catchError,response } from '@/lib/helperFunctions.js';
-import MediaModel from "@/models/mediamodel";
+import MediaModel from "@/models/MediaModel";
 import mongoose from "mongoose"
 import {v2 as cloudinary} from 'cloudinary'
 import { isAuthenticated } from "@/lib/authentication";

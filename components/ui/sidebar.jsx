@@ -111,6 +111,50 @@ const SidebarMenuButton = React.forwardRef(
 )
 SidebarMenuButton.displayName = "SidebarMenuButton"
 
+const SidebarMenuSub = React.forwardRef(({ className, ...props }, ref) => (
+  <ul
+    ref={ref}
+    className={cn("ml-4 space-y-1 border-l pl-4", className)}
+    {...props}
+  />
+))
+SidebarMenuSub.displayName = "SidebarMenuSub"
+
+const SidebarMenuSubItem = React.forwardRef(({ className, ...props }, ref) => (
+  <li ref={ref} className={cn("", className)} {...props} />
+))
+SidebarMenuSubItem.displayName = "SidebarMenuSubItem"
+
+const SidebarMenuSubButton = React.forwardRef(
+  ({ asChild = false, className, ...props }, ref) => {
+    const Comp = asChild ? Slot : "button"
+
+    return (
+      <Comp
+        ref={ref}
+        className={cn(
+          "flex w-full items-center gap-2 rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring",
+          className
+        )}
+        {...props}
+      />
+    )
+  }
+)
+SidebarMenuSubButton.displayName = "SidebarMenuSubButton"
+
+const useSidebar = () => {
+  const context = React.useContext(SidebarContext)
+  if (!context) {
+    throw new Error("useSidebar must be used within a SidebarProvider")
+  }
+  return {
+    open: context.open,
+    setOpen: context.setOpen,
+    toggleSidebar: () => context.setOpen(!context.open),
+  }
+}
+
 export {
   SidebarProvider,
   Sidebar,
@@ -120,5 +164,9 @@ export {
   SidebarMenu,
   SidebarMenuItem,
   SidebarMenuButton,
+  SidebarMenuSub,
+  SidebarMenuSubItem,
+  SidebarMenuSubButton,
   SidebarContext,
+  useSidebar,
 }

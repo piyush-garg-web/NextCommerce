@@ -86,4 +86,4 @@ Copy Link
   )
 }
 
-export default media
+export default Media

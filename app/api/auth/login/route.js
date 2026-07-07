@@ -1,5 +1,5 @@
-import OTPModel from "@/models/otp.model";
-import UserModel from "@/models/user.model";
+import OTPModel from "@/models/OtpModel";
+import UserModel from "@/models/UserModel";
 import { connectToDB } from '@/lib/dbConnection.js';
 import { emailVerificationLink } from "@/email/emailVerificationLink";
 import { otpEmail } from "@/email/otpEmail";

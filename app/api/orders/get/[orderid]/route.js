@@ -1,7 +1,7 @@
 import { connectToDB } from "@/lib/dbConnection";
 import { catchError, response } from "@/lib/helperFunctions";
 import { isAuthenticated } from "@/lib/authentication";
-import MediaModel from "@/models/mediamodel";
+import MediaModel from "@/models/MediaModel";
 import OrderModel from "@/models/Order.model";
 import ProductModel from "@/models/Product.model";
 import ProductVariantModel from "@/models/ProductVariant.model";

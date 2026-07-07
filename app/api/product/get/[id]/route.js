@@ -3,7 +3,7 @@ import { connectToDB } from "@/lib/dbConnection";
 import { catchError,response } from "@/lib/helperFunctions";
 import ProductModel from "@/models/Product.model";
 import { isValidObjectId } from "mongoose";
-import MediaModel from "@/models/mediamodel";
+import MediaModel from "@/models/MediaModel";
 
 export async function GET(request,{params}) {
     try {

@@ -1,8 +1,8 @@
 import { connectToDB } from '@/lib/dbConnection.js';
 import { response, catchError } from '@/lib/helperFunctions.js';
 import { zschema } from '@/lib/zodSchema.js';
-import OTPModel from "@/models/otp.model";
-import UserModel from "@/models/user.model";
+import OTPModel from "@/models/OtpModel";
+import UserModel from "@/models/UserModel";
 import { SignJWT } from "jose";
 import { cookies } from "next/headers";
 

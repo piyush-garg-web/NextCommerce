@@ -1,7 +1,7 @@
 import { connectToDB } from '@/lib/dbConnection.js';
 import { catchError,response } from '@/lib/helperFunctions.js';
 import ProductModel from "@/models/Product.model";
-import MediaModel from "@/models/mediamodel";
+import MediaModel from "@/models/MediaModel";
 
 export async function GET() {
     try {
