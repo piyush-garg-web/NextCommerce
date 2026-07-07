@@ -1,7 +1,6 @@
 import { NextResponse } from "next/server"
-import { USER_DASHBOARD, WEBSITE_LOGIN } from "./routes/website"
+import { WEBSITE_HOME, WEBSITE_LOGIN } from "./routes/website"
 import { jwtVerify } from "jose"
-import { ADMIN_DASHBOARD } from "./routes/adminpanel"
 
 export async function middleware(request) {
     try{
@@ -23,7 +22,7 @@ export async function middleware(request) {
         const role=payload.role
         if (pathname.startsWith('/auth')) {
             const callbackUrl = request.nextUrl.searchParams.get('callback')
-            const redirectUrl = callbackUrl ? new URL(callbackUrl, request.nextUrl) : new URL(role==='admin' ? ADMIN_DASHBOARD:USER_DASHBOARD, request.nextUrl)
+            const redirectUrl = callbackUrl ? new URL(callbackUrl, request.nextUrl) : new URL(WEBSITE_HOME, request.nextUrl)
             return NextResponse.redirect(redirectUrl)
         }
  
