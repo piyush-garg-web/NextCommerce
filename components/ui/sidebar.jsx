@@ -1,8 +1,15 @@
+"use client";
+
 import * as React from "react"
 import { Slot } from "@radix-ui/react-slot"
 import { cva } from "class-variance-authority"
 
 import { cn } from "@/lib/utils"
+
+const SidebarContext = React.createContext({
+  open: true,
+  setOpen: () => {},
+})
 
 const SidebarProvider = ({ children, defaultOpen = true }) => {
   const [open, setOpen] = React.useState(defaultOpen)
@@ -13,11 +20,6 @@ const SidebarProvider = ({ children, defaultOpen = true }) => {
     </SidebarContext.Provider>
   )
 }
-
-const SidebarContext = React.createContext({
-  open: true,
-  setOpen: () => {},
-})
 
 const Sidebar = React.forwardRef(({ className, children, ...props }, ref) => {
   const { open } = React.useContext(SidebarContext)
