@@ -1,5 +1,5 @@
 'use client'
-import { USER_DASHBOARD, WEBSITE_HOME, WEBSITE_LOGIN, WEBSITE_SHOP, USER_ORDERS } from '@/routes/website'
+import { USER_DASHBOARD, WEBSITE_HOME, WEBSITE_LOGIN, WEBSITE_REGISTER, WEBSITE_SHOP, USER_ORDERS } from '@/routes/website'
 import Image from 'next/image'
 import Link from 'next/link'
 import React, { useState } from 'react'
@@ -17,6 +17,7 @@ import axios from 'axios'
 import { showToast } from '@/lib/showToast'
 import { logout } from '@/store/reducer/authReducer'
 import { useRouter } from 'next/navigation'
+import { useEffect } from 'react'
 
 
 const Header = () => {
@@ -26,6 +27,16 @@ const Header = () => {
   const auth=useSelector(store=>store.authStore.auth)
   const dispatch = useDispatch()
   const router = useRouter()
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (isUserMenuOpen && !event.target.closest('.user-dropdown-container')) {
+        setIsUserMenuOpen(false)
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [isUserMenuOpen])
 
   const handleLogout = async () => {
     try {
@@ -114,37 +125,34 @@ size={25} />
 </button>
 <Cart />
 {!auth ?
-<Link href={WEBSITE_LOGIN} className='flex items-center gap-2 text-gray-600 hover:text-primary font-semibold'>
-  <VscAccount size={20} />
-  <span>Sign Up</span>
-</Link> :
-<div className='relative'>
-  <button type='button' onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}>
-    <Avatar>
+<div className='flex items-center gap-3'>
+  <Link href={WEBSITE_LOGIN} className='flex items-center gap-2 text-gray-600 hover:text-primary font-semibold'>
+    <VscAccount size={20} />
+    <span>Login</span>
+  </Link>
+  <Link href={WEBSITE_REGISTER} className='flex items-center gap-2 text-gray-600 hover:text-primary font-semibold'>
+    <span>Sign Up</span>
+  </Link>
+</div> :
+<div className='relative user-dropdown-container'>
+  <button type='button' onClick={() => setIsUserMenuOpen(!isUserMenuOpen)} className='cursor-pointer'>
+    <Avatar className='w-10 h-10 border-2 border-gray-200 hover:border-primary transition-colors'>
       <AvatarImage src={auth?.avatar?.url ||  userIcon.src } />
     </Avatar>
   </button>
   {isUserMenuOpen && (
     <div className='absolute right-0 mt-2 w-48 bg-white border rounded-lg shadow-lg z-50'>
-      <Link 
-        href={USER_DASHBOARD} 
-        className='flex items-center gap-2 px-4 py-2 hover:bg-gray-100' 
-        onClick={() => setIsUserMenuOpen(false)}
-      >
-        <VscAccount size={16} />
-        My Account
-      </Link>
-      <Link 
-        href={USER_ORDERS} 
-        className='flex items-center gap-2 px-4 py-2 hover:bg-gray-100' 
+      <Link
+        href={USER_ORDERS}
+        className='flex items-center gap-2 px-4 py-2 hover:bg-gray-100'
         onClick={() => setIsUserMenuOpen(false)}
       >
         <FaBox size={16} />
-        Orders
+        My Orders
       </Link>
-      <button 
-        type='button' 
-        className='flex items-center gap-2 px-4 py-2 hover:bg-gray-100 w-full text-left' 
+      <button
+        type='button'
+        className='flex items-center gap-2 px-4 py-2 hover:bg-gray-100 w-full text-left'
         onClick={handleLogout}
       >
         <FaSignOutAlt size={16} />

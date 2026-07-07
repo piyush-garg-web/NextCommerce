@@ -4,7 +4,7 @@ import { USER_DASHBOARD, USER_ORDERS, USER_PROFILE } from '@/routes/website'
 import { FaUser } from "react-icons/fa";
 import { HiOutlineShoppingBag } from "react-icons/hi2";
 import { IoSettingsOutline } from "react-icons/io5";
-import { useRouter } from 'next/navigation'
+import { useRouter, usePathname } from 'next/navigation'
 import { useDispatch, useSelector } from 'react-redux'
 import { logout } from '@/store/reducer/authReducer'
 import axios from 'axios'
@@ -12,6 +12,7 @@ import { showToast } from '@/lib/showToast'
 
 const UserPanelNavigation = () => {
   const router = useRouter()
+  const pathname = usePathname()
   const dispatch = useDispatch()
   const auth = useSelector(store => store.authStore.auth)
 
@@ -40,19 +41,19 @@ const UserPanelNavigation = () => {
       <nav>
         <ul>
           <li className='mb-2'>
-            <Link href={USER_DASHBOARD} className='flex items-center gap-3 p-2 rounded hover:bg-gray-200 transition-colors'>
+            <Link href={USER_DASHBOARD} className={`flex items-center gap-3 p-2 rounded transition-colors ${pathname === USER_DASHBOARD ? 'bg-primary text-white' : 'hover:bg-gray-200'}`}>
               <HiOutlineShoppingBag size={20} />
               <span>Dashboard</span>
             </Link>
           </li>
           <li className='mb-2'>
-            <Link href={USER_ORDERS} className='flex items-center gap-3 p-2 rounded hover:bg-gray-200 transition-colors'>
+            <Link href={USER_ORDERS} className={`flex items-center gap-3 p-2 rounded transition-colors ${pathname === USER_ORDERS ? 'bg-primary text-white' : 'hover:bg-gray-200'}`}>
               <HiOutlineShoppingBag size={20} />
               <span>Orders</span>
             </Link>
           </li>
           <li className='mb-2'>
-            <Link href={USER_PROFILE} className='flex items-center gap-3 p-2 rounded hover:bg-gray-200 transition-colors'>
+            <Link href={USER_PROFILE} className={`flex items-center gap-3 p-2 rounded transition-colors ${pathname === USER_PROFILE ? 'bg-primary text-white' : 'hover:bg-gray-200'}`}>
               <IoSettingsOutline size={20} />
               <span>Profile</span>
             </Link>
