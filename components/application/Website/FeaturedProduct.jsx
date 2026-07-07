@@ -1,20 +1,35 @@
-'use client';
+import { connectToDB } from '@/lib/dbConnection';
+import ProductModel from '@/models/Product.model';
+import MediaModel from '@/models/mediamodel';
+import Link from 'next/link'
+import React from 'react'
+import { FaArrowRight } from "react-icons/fa6";
+import ProductBox from './ProductBox';
 
-import React from 'react';
+const FeaturedProduct = async () => {
+    await connectToDB();
+    const getProduct = await ProductModel.find({ deleteType: null }).populate('media').limit(8).lean();
 
-export default function FeaturedProduct() {
+    if (!getProduct) {
+        return null
+    }
   return (
-    <section className="lg:px-32 px-4 sm:pt-20 pt-5 pb-10">
-      <h2 className="text-2xl font-bold mb-6">Featured Products</h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {[1, 2, 3, 4].map((item) => (
-          <div key={item} className="border rounded-lg p-4 bg-white">
-            <div className="h-48 bg-gray-200 rounded mb-4"></div>
-            <h3 className="font-semibold mb-2">Product {item}</h3>
-            <p className="text-gray-600">$99.99</p>
-          </div>
-        ))}
-      </div>
-    </section>
-  );
+   <section className='lg:px-32 px-4 sm:py-10'>
+    <div className='flex justify-between items-center mb-5'>
+<h2 className='sm:text-4xl text-2xl font-semibold '>Featured Products !</h2>
+<Link href='' className='flex items-center gap-2 underline underline-offset-4 hover:text-primary'>
+View All <FaArrowRight />
+</Link>
+  </div>
+  <div className='grid md:grid-cols-4 grid-cols-2 sm:gap-10 gap-2'>
+{getProduct.length === 0 && <div className='text-center py-5'>Data Not Found</div>}
+{getProduct.map((product)=>(
+    <ProductBox key={product._id} product={product} />
+))}
+  </div>
+
+   </section>
+  )
 }
+
+export default FeaturedProduct
