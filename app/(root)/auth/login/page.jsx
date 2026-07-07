@@ -34,6 +34,7 @@ import { useSearchParams } from "next/navigation"
 import { useRouter } from "next/navigation"
 import { ADMIN_DASHBOARD} from "@/routes/adminpanel"
 import { USER_DASHBOARD } from "@/routes/website"
+import { WEBSITE_HOME } from "@/routes/website"
 import { signIn } from "next-auth/react"
 import { FcGoogle } from "react-icons/fc"
 
@@ -95,7 +96,7 @@ const [otpVerificationLoading, setOtpVerificationLoading] = useState(false);
               if (searchParams.has('callback')) {
                 router.push(searchParams.get('callback'))
               } else {
-                router.push(USER_PROFILE)
+                router.push(WEBSITE_HOME)
               }
            
         } catch (error) {

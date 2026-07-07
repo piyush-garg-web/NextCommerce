@@ -82,8 +82,8 @@ export const authOptions = {
       }
     },
     async redirect({ url, baseUrl }) {
-      // Redirect to profile page after successful sign-in
-      return `${baseUrl}/profile`;
+      // Redirect to home page after successful sign-in
+      return `${baseUrl}`;
     },
   },
   secret: process.env.NEXTAUTH_SECRET || process.env.SECRET_KEY,

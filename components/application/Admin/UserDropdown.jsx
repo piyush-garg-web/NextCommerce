@@ -8,6 +8,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import Image from 'next/image'
 import adminLogo from "@/public/assets/images/adminlogo.png"
 import { useSelector } from 'react-redux'
 import { IoShirtOutline } from "react-icons/io5";
@@ -24,8 +25,10 @@ const UserDropdown = () => {
     <DropdownMenu >
   <DropdownMenuTrigger asChild>
 <Avatar className="cursor-pointer">
-  <AvatarImage src={adminLogo.src}/>
-
+  <AvatarImage src={auth?.avatar?.url} />
+  <AvatarFallback>
+    <Image src={adminLogo} alt='Admin' width={40} height={40} />
+  </AvatarFallback>
 </Avatar>
   </DropdownMenuTrigger>
   <DropdownMenuContent className="me-5 w-44">

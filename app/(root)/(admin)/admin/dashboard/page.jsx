@@ -12,7 +12,7 @@ import { ADMIN_ORDER_SHOW, ADMIN_REVIEW_SHOW } from '@/routes/adminpanel'
 
 const AdminDashboard = () => {
   return (
-    <div className='pt-5'>
+    <div>
       <CountOverview />
       <QuickAdd />
       <div className='mt-10 flex lg:flex-nowrap flex-wrap gap-10'>

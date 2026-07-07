@@ -8,24 +8,28 @@ const layout = ({ children }) => {
   return (
 <ThemeProvider
             attribute="class"
-            defaultTheme="system"
-            enableSystem
+            defaultTheme="light"
+            enableSystem={false}
             disableTransitionOnChange>
   <SidebarProvider>
-      <AppSidebar />
-      <main className='md:w-[calc(100vw-16rem)] w-full'> <div className='pt-[70px] md:px-8 px-5 min-h-[calc(100vh-40px)] pb-10'>
-        <TopBar /> {children}
+      <div className='flex min-h-screen'>
+        <AppSidebar />
+        <div className='flex-1 flex flex-col'>
+          <TopBar />
+          <div className='flex-1 md:pe-8 px-5 pt-4 pb-10 overflow-y-auto'>
+            {children}
+            <div className='border-t h-[40px] flex justify-center items-center bg-gray-50 dark:bg-background text-sm mt-10'>
+              ©
+              2025
+              PIYUSH GARG™.
+              All Rights Reserved.
+            </div>
+          </div>
+        </div>
       </div>
-        <div className='border-t h-[40px] flex justify-center items-center bg-gray-50 dark:bg-background text-sm'>
-          ©
-          2025
-          PIYUSH GARG™.
-          All Rights Reserved.
-        </div>  </main>
-
     </SidebarProvider>
 </ThemeProvider>
-    
+
 
   )
 }

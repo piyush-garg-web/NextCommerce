@@ -86,7 +86,7 @@ import { decode } from 'entities';
 /**
  * Create a free account with a trial: https://portal.ckeditor.com/checkout?plan=free
  */
-const LICENSE_KEY = 'GPL'; // or <YOUR_LICENSE_KEY>.
+const LICENSE_KEY = ''; // Empty for open-source version
 
 export default function Editor({ onChange, initialData }) {
     const editorContainerRef = useRef(null);

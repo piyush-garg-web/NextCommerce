@@ -7,7 +7,7 @@ import logo from '@/public/assets/images/logo-black.png'
 import { FaSearch, FaSignOutAlt, FaBox } from "react-icons/fa";
 import Cart from './Cart'
 import { useDispatch, useSelector } from 'react-redux'
-import { Avatar, AvatarImage } from '@/components/ui/avatar'
+import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar'
 import userIcon from '@/public/assets/images/user.png'
 import { FaBars } from "react-icons/fa6";
 import { IoMdClose } from "react-icons/io";
@@ -132,7 +132,10 @@ size={25} />
 <div className='relative user-dropdown-container'>
   <button type='button' onClick={() => setIsUserMenuOpen(!isUserMenuOpen)} className='cursor-pointer'>
     <Avatar className='w-10 h-10 border-2 border-gray-200 hover:border-primary transition-colors'>
-      <AvatarImage src={auth?.avatar?.url ||  userIcon.src } />
+      <AvatarImage src={auth?.avatar?.url} />
+      <AvatarFallback>
+        <Image src={userIcon} alt='User' width={40} height={40} />
+      </AvatarFallback>
     </Avatar>
   </button>
   {isUserMenuOpen && (

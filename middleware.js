@@ -20,12 +20,13 @@ export async function middleware(request) {
         const {payload}=await jwtVerify(access_token, new TextEncoder().encode(process.env.SECRET_KEY))
 
         const role=payload.role
+
         if (pathname.startsWith('/auth')) {
             const callbackUrl = request.nextUrl.searchParams.get('callback')
             const redirectUrl = callbackUrl ? new URL(callbackUrl, request.nextUrl) : new URL(WEBSITE_HOME, request.nextUrl)
             return NextResponse.redirect(redirectUrl)
         }
- 
+
             if (pathname.startsWith('/admin') && role!=='admin') {
                 return NextResponse.redirect(new URL(WEBSITE_LOGIN, request.nextUrl))
 }
@@ -37,7 +38,6 @@ export async function middleware(request) {
         return NextResponse.next()
 
     } catch(error){
-
  return NextResponse.redirect(new URL(WEBSITE_LOGIN, request.nextUrl))
      }
 }

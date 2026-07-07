@@ -1,6 +1,8 @@
 import { jwtVerify } from "jose";
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
+import UserModel from "@/models/UserModel";
+import { connectToDB } from "@/lib/dbConnection";
 
 export async function GET() {
   try {
@@ -13,7 +15,15 @@ export async function GET() {
       accessToken,
       new TextEncoder().encode(process.env.SECRET_KEY)
     );
-    return NextResponse.json({ success: true, data: payload });
+    
+    await connectToDB();
+    const user = await UserModel.findById(payload._id).select('-password');
+    
+    if (!user) {
+      return NextResponse.json({ success: false, message: "User not found" });
+    }
+    
+    return NextResponse.json({ success: true, data: user });
   } catch (error) {
     return NextResponse.json({ success: false, error: error.message });
   }
