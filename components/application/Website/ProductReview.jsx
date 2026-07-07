@@ -18,7 +18,7 @@ import Link from 'next/link'
 import { showToast } from '@/lib/showToast'
 import CustomButton from '../CustomButton'
 import ReviewList from './ReviewList'
-import zschema from '@/lib/zodSchema'
+import { zschema } from '@/lib/zodSchema'
 
 const ProductReview = ({ productId, reviewCount }) => {
   const [isReview, setIsReview] = useState(false)
