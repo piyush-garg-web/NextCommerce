@@ -1,6 +1,6 @@
 
-import { connectToDB } from "@/lib/dbConnection";
-import { response } from "@/lib/helperFunctions";
+import { connectToDB } from '@/lib/dbConnection.js';
+import { response } from '@/lib/helperFunctions.js';
 import CategoryModel from "@/models/Category.model";
 import MediaModel from "@/models/mediamodel";
 import ProductModel from "@/models/Product.model";

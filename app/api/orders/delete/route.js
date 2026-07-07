@@ -1,5 +1,5 @@
-import { connectToDB } from "@/lib/dbConnection";
-import { catchError,response } from "@/lib/helperFunctions";
+import { connectToDB } from '@/lib/dbConnection.js';
+import { catchError,response } from '@/lib/helperFunctions.js';
 import mongoose from "mongoose"
 import { isAuthenticated } from "@/lib/authentication";
 import OrderModel from "@/models/Order.model";

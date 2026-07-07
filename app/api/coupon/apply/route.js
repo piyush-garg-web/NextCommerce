@@ -1,6 +1,6 @@
-import { connectToDB } from "@/lib/dbConnection";
-import { catchError, response } from "@/lib/helperFunctions";
-import { zschema } from "@/lib/zodSchema";
+import { connectToDB } from '@/lib/dbConnection.js';
+import { catchError, response } from '@/lib/helperFunctions.js';
+import { zschema } from '@/lib/zodSchema.js';
 import CouponModel from "@/models/Coupon.model";
 
 export async function POST(request) {

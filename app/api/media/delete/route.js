@@ -1,5 +1,5 @@
-import { connectToDB } from "@/lib/dbConnection";
-import { catchError,response } from "@/lib/helperFunctions";
+import { connectToDB } from '@/lib/dbConnection.js';
+import { catchError,response } from '@/lib/helperFunctions.js';
 import MediaModel from "@/models/mediamodel";
 import mongoose from "mongoose"
 import {v2 as cloudinary} from 'cloudinary'

@@ -1,6 +1,6 @@
 import { isAuthenticated } from "@/lib/authentication"
-import { connectToDB } from "@/lib/dbConnection"
-import { catchError, response } from "@/lib/helperFunctions"
+import { connectToDB } from '@/lib/dbConnection.js'
+import { catchError, response } from '@/lib/helperFunctions.js'
 import CategoryModel from "@/models/Category.model"
 import { NextResponse } from "next/server"
 

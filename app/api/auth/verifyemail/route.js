@@ -1,6 +1,6 @@
-import { connectToDB } from "@/lib/dbConnection";
+import { connectToDB } from '@/lib/dbConnection.js';
 import UserModel from "@/models/user.model";
-import { response, catchError } from "@/lib/helperFunctions";
+import { response, catchError } from '@/lib/helperFunctions.js';
 import { jwtVerify } from "jose";
 
 

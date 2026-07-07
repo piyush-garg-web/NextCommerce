@@ -1,8 +1,8 @@
 import { orderNotification } from "@/email/orderNotification";
-import { connectToDB } from "@/lib/dbConnection";
-import { catchError, response } from "@/lib/helperFunctions";
+import { connectToDB } from '@/lib/dbConnection.js';
+import { catchError, response } from '@/lib/helperFunctions.js';
 import { sendMail } from "@/lib/sendMail";
-import { zschema } from "@/lib/zodSchema";
+import { zschema } from '@/lib/zodSchema.js';
 import OrderModel from "@/models/Order.model";
 import { validatePaymentVerification } from "razorpay/dist/utils/razorpay-utils";
 import z from "zod";

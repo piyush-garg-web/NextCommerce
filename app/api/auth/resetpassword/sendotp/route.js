@@ -1,11 +1,11 @@
-import { connectToDB } from "@/lib/dbConnection";
-import { catchError } from "@/lib/helperFunctions";
+import { connectToDB } from '@/lib/dbConnection.js';
+import { catchError } from '@/lib/helperFunctions.js';
 import UserModel from "@/models/user.model";
 import z from "zod";
-import { response } from "@/lib/helperFunctions";
-import { zschema } from "@/lib/zodSchema";  
+import { response } from '@/lib/helperFunctions.js';
+import { zschema } from '@/lib/zodSchema.js';  
 import OTPModel from "@/models/otp.model";
-import { generateOTP } from "@/lib/helperFunctions";
+import { generateOTP } from '@/lib/helperFunctions.js';
 import { sendMail } from "@/lib/sendMail";
 import { otpEmail } from "@/email/otpEmail";
 
