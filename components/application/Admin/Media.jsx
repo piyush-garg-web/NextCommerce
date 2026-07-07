@@ -10,7 +10,7 @@ import { IoIosLink } from "react-icons/io";
 import { FaTrash } from "react-icons/fa";
 import { showToast } from '@/lib/showToast';
 
-const media = ({media,handleDelete,deleteType,selectedMedia,setSelectedMedia}) => {
+const Media = ({media,handleDelete,deleteType,selectedMedia,setSelectedMedia}) => {
     const handleCheck=()=> {
         let newSelectedMedia=[]
         if (selectedMedia.includes(media._id)) {

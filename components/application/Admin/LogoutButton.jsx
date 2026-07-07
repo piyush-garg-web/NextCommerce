@@ -1,6 +1,6 @@
 import { DropdownMenuItem } from '@/components/ui/dropdown-menu';
 import { showToast } from '@/lib/showToast';
-import { WEBSITE_LOGIN } from '@/routes/website';
+import { WEBSITE_HOME } from '@/routes/website';
 import { useRouter } from 'next/navigation';
 import React from 'react'
 import { MdLogout } from "react-icons/md";
@@ -20,7 +20,7 @@ const LogoutButton  = () => {
             }
             dispatch(logout())
             showToast("success",logoutResponse.message)
-            router.push(WEBSITE_LOGIN)
+            router.push(WEBSITE_HOME)
         } catch(error) {
             showToast("error",error.message)
         }
