@@ -21,13 +21,13 @@ const Home = () => {
         <div className='grid grid-cols-2 sm:gap-10 gap-2'>
           <div className='border rounded-lg overflow-hidden'>
             <Link href="" >
-              <Image className='transition-all hover:scale-110' src={banner1.src} width={banner1.width} height={banner1.height} alt='banner 1' /> </Link>
+              <Image className='transition-all hover:scale-110' src={banner1.src} width={banner1.width} height={banner1.height} alt='banner 1' loading="eager" /> </Link>
 
           </div>
 
           <div className='border rounded-lg overflow-hidden'>
             <Link href="" >
-              <Image className='transition-all hover:scale-110' src={banner2.src} width={banner2.width} height={banner2.height} alt='banner 2' /> </Link>
+              <Image className='transition-all hover:scale-110' src={banner2.src} width={banner2.width} height={banner2.height} alt='banner 2' loading="eager" /> </Link>
 
           </div>
         </div>
