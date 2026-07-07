@@ -14,14 +14,14 @@ A production-grade full-stack e-commerce platform with customer storefront, adva
   <a href="https://cloudinary.com/"><img src="https://img.shields.io/badge/Cloudinary-Media-3448C5?style=for-the-badge&logo=cloudinary&logoColor=white" alt="Cloudinary" /></a>
   <a href="https://vercel.com/"><img src="https://img.shields.io/badge/Vercel-Deployment-000000?style=for-the-badge&logo=vercel&logoColor=white" alt="Vercel" /></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge" alt="License: MIT" /></a>
-  <a href="https://github.com/piyush-garg-web/nextjs-ecommerce-platform"><img src="https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub Repository" /></a>
+  <a href="https://github.com/piyush-garg-web/NextCommerce"><img src="https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub Repository" /></a>
 </p>
 
 <p align="center">
   <strong>
     <a href="https://e-commerce-gilt-seven-85.vercel.app/">⚡ Live Demo</a> 
     &nbsp;•&nbsp; 
-    <a href="https://github.com/piyush-garg-web/nextjs-ecommerce-platform">💻 GitHub Repository</a> 
+    <a href="https://github.com/piyush-garg-web/NextCommerce">💻 GitHub Repository</a> 
     &nbsp;•&nbsp; 
     <a href="https://www.linkedin.com/in/piyushgarg-dev">👔 LinkedIn Profile</a>
   </strong>
@@ -226,8 +226,8 @@ Deploy the application locally in a few steps:
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/piyush-garg-web/nextjs-ecommerce-platform.git
-cd nextjs-ecommerce-platform
+git clone https://github.com/piyush-garg-web/NextCommerce.git
+cd NextCommerce
 ```
 
 ### 2. Install Project Dependencies
@@ -297,7 +297,7 @@ RAZORPAY_KEY_SECRET="..."
 
 Deploy this Next.js project to Vercel in three steps:
 
-1. **Connect Repository**: Import `piyush-garg-web/nextjs-ecommerce-platform` to your Vercel Dashboard.
+1. **Connect Repository**: Import `piyush-garg-web/NextCommerce` to your Vercel Dashboard.
 2. **Environment Variables**: Add all variables from `.env.example` in Vercel's project settings.
 3. **Build & Deploy**: Trigger deployment. Vercel automatically configures the serverless routes, Next.js build optimization, and edge middleware functions.
 
