@@ -95,7 +95,7 @@ const [otpVerificationLoading, setOtpVerificationLoading] = useState(false);
               if (searchParams.has('callback')) {
                 router.push(searchParams.get('callback'))
               } else {
-                otpResponse.data.role=== 'admin' ? router.push(ADMIN_DASHBOARD) : router.push(USER_DASHBOARD)
+                router.push(USER_PROFILE)
               }
            
         } catch (error) {
