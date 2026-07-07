@@ -1,25 +1,58 @@
-# E-Commerce Platform
+# 🚀 E-Commerce Platform
 
-[![Next.js](https://img.shields.io/badge/Next.js-15.0-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
-[![React](https://img.shields.io/badge/React-19.0-blue?style=for-the-badge&logo=react)](https://react.dev/)
-[![Node.js](https://img.shields.io/badge/Node.js-20.0-green?style=for-the-badge&logo=nodedotjs)](https://nodejs.org/)
-[![MongoDB](https://img.shields.io/badge/MongoDB-Atlas-47A248?style=for-the-badge&logo=mongodb)](https://www.mongodb.com/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-v4-06B6D4?style=for-the-badge&logo=tailwindcss)](https://tailwindcss.com/)
-[![Razorpay](https://img.shields.io/badge/Razorpay-Gateway-02042B?style=for-the-badge&logo=razorpay)](https://razorpay.com/)
-[![Cloudinary](https://img.shields.io/badge/Cloudinary-Media-3448C5?style=for-the-badge&logo=cloudinary)](https://cloudinary.com/)
-[![Vercel](https://img.shields.io/badge/Vercel-Deployment-000000?style=for-the-badge&logo=vercel)](https://vercel.com/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](LICENSE)
+A production-grade full-stack e-commerce platform with customer storefront, advanced admin dashboard, secure payments, inventory management, and scalable architecture.
 
-A production-grade, highly performant full-stack e-commerce platform built with Next.js (App Router), MongoDB, and Razorpay. It features a complete customer storefront and a feature-rich Admin Panel with variant-level inventory controls, soft-delete recovery system, automated OTP email verifications, and interactive dashboards.
+<p align="center">
+  <a href="https://nextjs.org/"><img src="https://img.shields.io/badge/Next.js-15+-000000?style=for-the-badge&logo=next.js&logoColor=white" alt="Next.js" /></a>
+  <a href="https://react.dev/"><img src="https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react&logoColor=black" alt="React" /></a>
+  <a href="https://nodejs.org/"><img src="https://img.shields.io/badge/Node.js-20+-339933?style=for-the-badge&logo=node.js&logoColor=white" alt="Node.js" /></a>
+  <a href="https://www.mongodb.com/"><img src="https://img.shields.io/badge/MongoDB-Atlas-47A248?style=for-the-badge&logo=mongodb&logoColor=white" alt="MongoDB" /></a>
+  <a href="https://tailwindcss.com/"><img src="https://img.shields.io/badge/Tailwind_CSS-v4-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white" alt="Tailwind CSS" /></a>
+  <a href="https://redux-toolkit.js.org/"><img src="https://img.shields.io/badge/Redux_Toolkit-State-764ABC?style=for-the-badge&logo=redux&logoColor=white" alt="Redux Toolkit" /></a>
+  <br />
+  <a href="https://razorpay.com/"><img src="https://img.shields.io/badge/Razorpay-Gateway-02042B?style=for-the-badge&logo=razorpay&logoColor=white" alt="Razorpay" /></a>
+  <a href="https://cloudinary.com/"><img src="https://img.shields.io/badge/Cloudinary-Media-3448C5?style=for-the-badge&logo=cloudinary&logoColor=white" alt="Cloudinary" /></a>
+  <a href="https://vercel.com/"><img src="https://img.shields.io/badge/Vercel-Deployment-000000?style=for-the-badge&logo=vercel&logoColor=white" alt="Vercel" /></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge" alt="License: MIT" /></a>
+  <a href="https://github.com/piyush-garg-web/nextjs-ecommerce-platform"><img src="https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub Repository" /></a>
+</p>
+
+<p align="center">
+  <strong>
+    <a href="https://e-commerce-gilt-seven-85.vercel.app/">⚡ Live Demo</a> 
+    &nbsp;•&nbsp; 
+    <a href="https://github.com/piyush-garg-web/nextjs-ecommerce-platform">💻 GitHub Repository</a> 
+    &nbsp;•&nbsp; 
+    <a href="https://www.linkedin.com/in/piyushgarg-dev">👔 LinkedIn Profile</a>
+  </strong>
+</p>
 
 ---
 
-## 🔗 Live Demo & Credentials
+## 📌 Introduction
+
+This project is a high-performance, full-stack e-commerce application designed to support production-level loads and workflows. Built with Next.js (App Router), React 19, and MongoDB, the system features a fluid customer storefront alongside a robust administration panel. 
+
+The customer experience includes secure JWT authentication, real-time catalog search, advanced product filtering, and a state-persisted shopping cart integrated with the Razorpay payment gateway. Meanwhile, the administration portal allows managers to handle inventory matrices (color/size variants), track client activity, verify financial sales distributions via chart analytics, moderate reviews, manage discount coupons, and restore elements using a custom soft-delete trash recovery system.
+
+---
+
+## ❓ Why This Project?
+
+Building a standard online shopping cart is relatively straightforward. However, resolving the challenges of a **production-grade e-commerce application** requires solving complex real-world technical problems:
+
+1. **Transactional Integrity & Stock Validation**: Client-side prices and inventories can easily be tampered with. This project implements automatic server-side validation against MongoDB prior to generating Razorpay order IDs, ensuring customers are billed exactly according to dynamic pricing matrices and stock levels.
+2. **Complex Variant Matrix Control**: Real retail items exist in multiple variants (e.g., shirt sizes and colors), each demanding its own SKU, image set, pricing tier, and inventory count. This application models these variants cleanly using referenced schemas.
+3. **Database Fault Tolerance & Recovery**: Accidental deletion of products, categories, or reviews can cause cascading failures. The custom soft-delete trash bin provides a safe staging environment where administrators can instantly recover deleted records.
+4. **Stateless Security**: Role-based access is validated through secure HTTP-only cookies (`access_token`) and decoded using Edge Middleware to ensure zero unauthorized API leakage.
+
+---
+
+## ⚡ Live Demo & Account Credentials
+
+Explore the active platform using the following access configurations:
 
 * **Live Demo URL**: [https://e-commerce-gilt-seven-85.vercel.app/](https://e-commerce-gilt-seven-85.vercel.app/)
-
-### Demo Account Credentials
-To explore the application features without registering a new account, you may use these credentials:
 
 | Account Type | Email Address | Password |
 |---|---|---|
@@ -28,57 +61,100 @@ To explore the application features without registering a new account, you may u
 
 ---
 
-## 🚀 Key Features
+## 📸 Visual Previews
 
-### 🛍️ Customer Features
-* **User Authentication**: Secure signup and login flow featuring custom JWT cookies (`access_token`) and email verification using 6-digit OTP codes.
-* **Product Catalog**: High-performance display of products grouped by dynamic categories.
-* **Fuzzy Product Search**: Real-time product search indexing using Fuse.js.
-* **Filter & Sort Grids**: Sift catalog products by price range, category, color, size, and sort order.
-* **Shopping Cart**: Client-side state persistence handled by Redux Persist, complete with server-side pricing and stock validation.
-* **Promotional Coupons**: Apply active discount codes at checkout to reduce final totals.
-* **Secure Checkout**: Integrated payment modal powered by Razorpay (supporting Cards, UPI, Netbanking).
-* **Order History & Details**: Track past transactions, invoices, and status metrics in real time.
-* **Responsive Layout**: Fluid design optimized for mobile, tablet, and desktop viewports.
+Here are visual previews of the storefront and checkout screens:
 
-### 🛡️ Administrative Features
-* **Sales Analytics Dashboard**: Aggregated charts (built with Recharts) displaying daily/weekly revenue statistics, average order value (AOV), and customer volumes.
-* **Product Catalog CRUD**: Complete control over creating, editing, and listing products.
-* **Variant Matrix Creator**: Add custom colors and sizes per product, each holding distinct pricing, SKUs, inventory counts, and image sheets.
-* **Category Manager**: Add or edit product catalog categories.
-* **Coupon Manager**: Configure coupon codes, discount percentages, minimum cart requirements, and expiry schedules.
-* **Customer List**: Query and review details of registered users.
-* **Order Tracker**: Track payments and update shipping statuses (`pending`, `shipped`, `delivered`, `cancelled`).
-* **Media Storage Hub**: Browse and delete Cloudinary uploads from a centralized dashboard table.
-* **Product Review Moderation**: Moderate customer product reviews and ratings.
-* **Soft-Deleted Trash Bin**: A safety net for categories, coupons, products, variants, and reviews. Allows administrators to either restore deleted items or permanently purge them.
+#### Storefront Interface
+| Landing Page | Shop Catalog |
+| :---: | :---: |
+| ![Landing Page](screenshots/home.png) | ![Shop Catalog](screenshots/shop.png) |
 
----
+| Filtered Catalog | Product Details |
+| :---: | :---: |
+| ![Filtered Catalog](screenshots/shop-filtered.png) | ![Product Details](screenshots/product-details.png) |
 
-## 🛠️ Tech Stack & Architecture
+| Shopping Cart | Secure Checkout |
+| :---: | :---: |
+| ![Shopping Cart](screenshots/cart.png) | ![Secure Checkout](screenshots/checkout.png) |
 
-| Layer | Technology | Version | Description |
-|---|---|---|---|
-| **Core Framework** | Next.js (App Router) | `16.2.x` | Server-Side Rendering (SSR) & API Route Handlers |
-| **UI Library** | React & ReactDOM | `19.1.x` | Modern UI rendering |
-| **Database** | MongoDB | Atlas | Document-based production cluster |
-| **ODM Interface** | Mongoose | `8.19.x` | Connection caching and typed schema maps |
-| **Styling** | Tailwind CSS & PostCSS | `v4` | Modern CSS styling |
-| **Components** | Material UI (MUI) & Radix | `7.x`/`1.x` | Tables, calendars, accordions, and dialog boxes |
-| **State Management** | Redux Toolkit | `2.9.x` | Shared state, persistent cart with Redux Persist |
-| **Data Fetching** | React Query & Axios | `5.x`/`1.x` | Server state fetching, query caching, and updates |
-| **Auth Cryptography** | Jose & BcryptJS | `6.x`/`3.x` | Stateless JWT tokens and secure password hashing |
-| **Email Service** | Nodemailer | `7.x` | SMTP dispatch for OTP verification and order alerts |
-| **Fuzzy Search** | Fuse.js | `7.x` | Client-side keyword search indexing |
+| Order Confirmation | User Login |
+| :---: | :---: |
+| ![Order Details](screenshots/order-details.png) | ![User Login](screenshots/login.png) |
 
-For a deep-dive walkthrough of architectural components and database relations, see:
-* 📄 [Architecture Specification](docs/ARCHITECTURE.md)
-* 📄 [Database Schema & Entity Maps](docs/DATABASE.md)
-* 📄 [Security Controls Guide](docs/SECURITY.md)
+| About Page |
+| :---: |
+| ![About Page](screenshots/about.png) |
 
 ---
 
-## 📂 Project Directory Structure
+## ⚙️ Key Features
+
+### 🛍️ Customer Storefront
+* **Authentication**: Login & registration flow featuring 6-digit OTP verification codes delivered via email.
+* **Product Catalog**: Dynamic catalog rendering with fast page loads.
+* **Fuzzy Product Search**: Fuzzy client-side search indexing utilizing Fuse.js.
+* **Filters & Sorting**: Filter items by category, price, size, and color, or sort dynamically (price, alphabet).
+* **Shopping Cart**: Client-side state persistence backed by Redux Persist.
+* **Coupon Discounts**: Validate dynamic discount codes to adjust the final purchase total.
+* **Secure Checkout**: Seamless Razorpay checkout integration with verification signatures.
+* **Order History**: Review previous invoice orders, tracking statuses, and address breakdowns.
+
+### 🛡️ Administrative Portal
+* **Sales Analytics**: Custom Recharts interface displaying order counts, daily revenue statistics, and customer signups.
+* **Product Management (CRUD)**: Easily add, edit, or remove catalog items.
+* **Variant Matrix Creator**: Customize individual variants (color, size) with unique images, stock values, and pricing.
+* **Category & Coupon Management**: Custom grids to configure active promo codes and dynamic category options.
+* **Central Media Storage**: Control panel to view, track, or delete Cloudinary uploads.
+* **Review Moderation**: Review and delete user reviews on products.
+* **Soft-Deleted Trash Bin**: Restore categories, coupons, products, variants, and reviews or permanently delete them.
+
+---
+
+## 🛠️ Technology Stack
+
+| Layer | Technologies Used | Description |
+|---|---|---|
+| **Frontend** | Next.js 15+ App Router, React 19, Tailwind CSS v4, Material UI (MUI), Radix UI | Modern responsive templates, unified design assets, and accessibility |
+| **Backend** | Next.js API Routes, Node.js, JWT Authentication, Jose, BcryptJS | Edge-compatible JWT token creation and secure password encryption |
+| **Database** | MongoDB Atlas, Mongoose | NoSQL cluster caching, indices, and schema configurations |
+| **State Management** | Redux Toolkit, Redux Persist | Local storage persistence for client shopping carts |
+| **Payments** | Razorpay Gateway | Real-time payment verification and invoices |
+| **Storage** | Cloudinary API | Centralized media CDN hosting and signed uploads |
+| **Email** | Nodemailer | Transactional notifications and verification links |
+| **Deployment** | Vercel | Scalable cloud deployment |
+
+---
+
+## 📐 System Architecture
+
+The application is built on a modular, unified Next.js architecture where client-side interactions communicate with backend services through protected routes.
+
+```mermaid
+graph TD
+    User([Customer / Admin]) <--> |HTTP/HTTPS| FE[Next.js App Router Frontend]
+    FE <--> |State Management| Redux[Redux Toolkit & Redux Persist]
+    FE <--> |Data Fetching| RQ[React Query & Axios]
+    FE <--> |API Routes| BE[Next.js REST API Handlers]
+    BE <--> |JWT Authentication & Guard| Middleware[Jose JWT Middleware]
+    BE <--> |Mongoose ODM| DB[(MongoDB Database)]
+    BE --> |Transactional Mail| Mail[Nodemailer SMTP]
+    BE <--> |Signed Uploads & Assets| Cloudinary[Cloudinary CDN]
+    FE <--> |Secure Client Checkout| Razorpay[Razorpay Gateway]
+    BE <--> |Verify Signature| Razorpay
+```
+
+### Architectural Flow:
+1. **Frontend**: Receives customer inputs, validates state (Redux), and schedules server-side synchronization queries (React Query).
+2. **API Routes**: Routes requests, checks user role authentication, and queries DB models.
+3. **Authentication**: Edge middleware intercepts routes, verifying session tokens using the `jose` JWT library.
+4. **Database**: Handles storage of structured documents using MongoDB and Mongoose.
+5. **Payment Gateway**: Validates checkout, interfaces with Razorpay API, and confirms payment signatures server-side.
+6. **Cloud Storage**: Uploads assets, generates signatures, and manages product images using Cloudinary.
+
+---
+
+## 📂 Project Structure
 
 ```text
 ├── app/                  # Next.js App Router root
@@ -90,11 +166,12 @@ For a deep-dive walkthrough of architectural components and database relations, 
 │   ├── globals.css       # Root stylesheet
 │   └── layout.jsx        # Root HTML wrapper
 ├── components/           # Reusable React components
-├── email/                # Nodemailer JSX transactional templates
+├── email/                # Nodemailer transactional templates (HTML converters)
 ├── hooks/                # Custom React hooks (React Query calls)
 ├── lib/                  # Helper utilities (db connection, validation schemas, toast alerts)
 ├── models/               # MongoDB Mongoose database schemas
 ├── public/               # Static assets & favicon files
+├── routes/               # Navigation route constant configurations
 ├── screenshots/          # Repository visual documentation captures
 ├── store/                # Redux Toolkit store config & slices
 ├── .env.example          # Template configuration file
@@ -107,56 +184,25 @@ For a deep-dive walkthrough of architectural components and database relations, 
 
 ---
 
-## 🔧 Installation & Local Setup
+## 📊 Database Design
 
-Get the application running locally in under 5 minutes:
+The data layer uses referenced MongoDB schemas to map inventory connections cleanly:
 
-### 1. Clone the Project
-```bash
-git clone https://github.com/piyushgarg6702-cyber/e-commerce.git
-cd e-commerce
-```
-
-### 2. Install Package Dependencies
-```bash
-npm install
-```
-
-### 3. Setup Environment Variables
-Duplicate the template file and fill in your custom keys:
-```bash
-cp .env.example .env.local
-```
-Refer to the [Environment Variables Guide](#-environment-variables) below for variable details.
-
-### 4. Run Server
-```bash
-npm run dev
-```
-Open [http://localhost:3000](http://localhost:3000) to view your local deployment.
-
-For detailed seeding and setup tips, check the 📄 [Setup & Seeding Documentation](docs/SETUP.md).
+* **User**: Customer profiles, cryptographic credentials, roles (`user`, `admin`), and email validation status.
+* **Product**: Common catalog details, category references, descriptions.
+* **ProductVariant**: Dependent variant sheets linking sizes, colors, pricing, SKUs, inventory stocks, and CDN image lists back to a `Product` parent.
+* **Category**: Broad classification groups.
+* **Coupon**: Active promotion matrices holding validation schemas.
+* **Review**: Customer text reviews and star configurations.
+* **Media**: Metadata records for media files.
+* **Order**: Customer invoices containing shipping details, Razorpay signatures, and billing summaries.
+* **OTP**: Valid temporary codes expiring automatically via MongoDB TTL (Time to Live) indexes.
 
 ---
 
-## 🔑 Environment Variables
+## ⚡ API Endpoint Reference
 
-The application requires the following environment variables. See [`.env.example`](.env.example) for a pre-formatted template.
-
-* `MONGODB_URL`: MongoDB connection string.
-* `SECRET_KEY`: Cryptographically strong secret key used by `jose` to sign session cookies.
-* `NODEMAILER_HOST` / `NODEMAILER_PORT`: SMTP server coordinates.
-* `NODEMAILER_EMAIL` / `NODEMAILER_PASSWORD`: Sender email address and app password.
-* `NEXT_PUBLIC_BASE_URL` / `NEXT_PUBLIC_API_BASE_URL`: Base domain coordinates.
-* `NEXT_PUBLIC_CLOUDINARY_API_KEY` / `NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME` / `CLOUDINARY_SECRET_KEY`: API details for media storage.
-* `NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET`: Unsigned upload preset created in Cloudinary.
-* `NEXT_PUBLIC_RAZORPAY_KEY_ID` / `RAZORPAY_KEY_SECRET`: API credentials for payments.
-
----
-
-## ⚡ API Overview
-
-All REST API endpoints are grouped under `/api/*` and use JSON request/response bodies:
+All backend communication uses JSON payloads. Detailed payload details can be found in [docs/API.md](docs/API.md).
 
 | Area | Endpoint | Method | Guard | Description |
 |---|---|---|---|---|
@@ -172,86 +218,106 @@ All REST API endpoints are grouped under `/api/*` and use JSON request/response 
 | **Admin** | `/api/coupon` | `POST`/`PUT`/`DELETE` | Admin | Coupon configuration CRUD |
 | **Admin** | `/api/dashboard` | `GET` | Admin | Fetch sales statistics and chart coordinates |
 
-For detailed payloads and request parameters, see the 📄 [API Guide](docs/API.md).
+---
+
+## 🔧 Installation & Local Setup
+
+Deploy the application locally in a few steps:
+
+### 1. Clone the Repository
+```bash
+git clone https://github.com/piyush-garg-web/nextjs-ecommerce-platform.git
+cd nextjs-ecommerce-platform
+```
+
+### 2. Install Project Dependencies
+```bash
+npm install
+```
+
+### 3. Configure the Environment
+Duplicate `.env.example` to create `.env.local` and populate the details:
+```bash
+cp .env.example .env.local
+```
+
+### 4. Start the Application
+```bash
+npm run dev
+```
+Open [http://localhost:3000](http://localhost:3000) to view your local deployment.
 
 ---
 
-## 📊 Database Entities
+## 🔑 Environment Variables Configuration
 
-This application uses MongoDB via Mongoose. For a visual Entity Relationship diagram, refer to 📄 [Database Schemas](docs/DATABASE.md).
+The application requires the configuration of the following values:
 
-* **User**: Profiles, authentication status, and customer/admin roles.
-* **Product**: Common catalog details, category references, descriptions.
-* **ProductVariant**: Specific combinations of color and size, unique SKUs, pricing, stock levels, and linked media assets.
-* **Category**: Product categories.
-* **Coupon**: Discount percentages, expiration validity, and minimum purchase requirements.
-* **Review**: Product reviews and star ratings.
-* **Media**: Metadata for uploaded assets on Cloudinary.
-* **Order**: Customer shipping details, shipping statuses, item breakdowns, pricing tallies, and payment signatures.
-* **OTP**: Temporary verification codes with MongoDB TTL auto-expirations.
+```bash
+# MongoDB Connection URL
+MONGODB_URL="mongodb+srv://..."
+
+# Cryptographic token secret for JWT verification
+SECRET_KEY="your-jose-jwt-secret-key-here"
+
+# SMTP Mail server configuration for OTP notifications
+NODEMAILER_HOST="smtp.gmail.com"
+NODEMAILER_PORT="587"
+NODEMAILER_EMAIL="..."
+NODEMAILER_PASSWORD="..."
+
+# Next.js client-facing address parameters
+NEXT_PUBLIC_BASE_URL="http://localhost:3000"
+NEXT_PUBLIC_API_BASE_URL="http://localhost:3000/api"
+
+# Cloudinary media configuration credentials
+NEXT_PUBLIC_CLOUDINARY_API_KEY="..."
+NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME="..."
+CLOUDINARY_SECRET_KEY="..."
+NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET="..."
+
+# Razorpay Checkout Gateway integration coordinates
+NEXT_PUBLIC_RAZORPAY_KEY_ID="..."
+RAZORPAY_KEY_SECRET="..."
+```
 
 ---
 
-## 🛡️ Security Highlights
+## 🛡️ Security Architecture
 
-* **HTTP-Only Cookies**: JWT tokens are transmitted via cookies configured as `HttpOnly`, `Secure`, and `SameSite=Strict`, defending the platform against XSS and CSRF token thefts.
-* **Bcrypt Password Hashing**: Hashing algorithm executed pre-save via Mongoose triggers to protect user passphrases.
-* **NoSQL Injection Shield**: Strict validation checks utilizing Zod schema models (`lib/zodSchema.js`) enforce validation before database operations.
-* **Cryptographic Payments Validation**: Secure transaction authentication via HMAC SHA256 checksum checks matching Razorpay signatures.
-
-For a detailed breakdown of security features, see 📄 [Security Policy](docs/SECURITY.md).
+* **Role-Based Guards**: Next.js custom middleware acts as a centralized boundary, decoding credentials using the edge-optimized `jose` parser.
+* **HTTP-Only Session Delivery**: Session authentication tokens are kept in cookies flagged as `HttpOnly`, `Secure`, and `SameSite=Strict`, mitigating cross-site scripting (XSS) exposures.
+* **Hashed Passwords**: Password verification utilizing BcryptJS hashes values securely before persisting them.
+* **Input Schema Sanitation**: API entry points enforce data types and sanitize requests using Zod schemas to block NoSQL injection vectors.
+* **Signature Verification**: Validates Razorpay webhooks and checkout success events by matching incoming payloads against local secrets using HMAC-SHA256.
 
 ---
 
-## 📸 Screenshots
+## ☁️ Deployment Instructions (Vercel)
 
-Here are visual previews of the storefront and checkout screens:
+Deploy this Next.js project to Vercel in three steps:
 
-### Storefront Interface
-
-| Home / Landing Page | About Us Page |
-|---|---|
-| ![Home Page](screenshots/home.png) | ![About Us Page](screenshots/about.png) |
-
-| Shop Catalog | Product Details |
-|---|---|
-| ![Shop Catalog](screenshots/shop.png) | ![Product Details](screenshots/product-details.png) |
-
-| Filtered Shop Catalog | Shopping Cart |
-|---|---|
-| ![Filtered Shop](screenshots/shop-filtered.png) | ![Shopping Cart](screenshots/cart.png) |
-
-| Secure Checkout Page | Order Details & Success |
-|---|---|
-| ![Checkout Page](screenshots/checkout.png) | ![Order Details](screenshots/order-details.png) |
-
-| User Account Login |
-|---|
-| ![Login Page](screenshots/login.png) |
+1. **Connect Repository**: Import `piyush-garg-web/nextjs-ecommerce-platform` to your Vercel Dashboard.
+2. **Environment Variables**: Add all variables from `.env.example` in Vercel's project settings.
+3. **Build & Deploy**: Trigger deployment. Vercel automatically configures the serverless routes, Next.js build optimization, and edge middleware functions.
 
 ---
 
 ## 🔮 Future Enhancements
 
-* **AI Product Recommendations**: Suggest catalog items based on customer navigation history.
-* **Multi-Vendor Support**: Enable multiple sellers to register store accounts and list items.
-* **Automatic PDF Invoice Generator**: Attach and email printable PDF receipt details on order confirmations.
-* **Inventory Predictive Forecasting**: Alert administrators when variant stock levels fall below thresholds.
-* **SMS Gateway Integration**: Text order tracking link alerts directly to customer mobile numbers.
+* **AI Recommendation Engine**: Train models to suggest products based on search queries and view counts.
+* **Multi-Vendor Capabilities**: Support multiple retail partners using shared infrastructure.
+* **Printable Invoices**: Dynamically generate PDF order receipts.
+* **Predictive Inventory Alerting**: Use machine learning to forecast stock requirements.
+* **SMS Tracking Updates**: Text orders and tracking notifications directly to users.
 
 ---
 
-## 🤝 Contributing
+## 👤 Author
 
-Contributions to improve this portfolio project are welcome!
-1. Fork the project.
-2. Create your feature branch (`git checkout -b feature/NewFeature`).
-3. Commit your changes (`git commit -m 'Add NewFeature'`).
-4. Push to the branch (`git push origin feature/NewFeature`).
-5. Open a Pull Request.
+**Piyush Garg**  
+*Full Stack Developer*
 
----
-
-## 📄 License
-
-Distributed under the MIT License. See [`LICENSE`](LICENSE) for details.
+* **Skills**: React, Next.js, Node.js, MongoDB, AI Tech
+* **GitHub**: [github.com/piyush-garg-web](https://github.com/piyush-garg-web)
+* **LinkedIn**: [linkedin.com/in/piyushgarg-dev](https://www.linkedin.com/in/piyushgarg-dev)
