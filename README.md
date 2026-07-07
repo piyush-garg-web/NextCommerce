@@ -1,4 +1,4 @@
-# 🚀 E-Commerce Platform
+# 🚀 NextCommerce - Full Stack E-Commerce Platform
 
 A production-grade full-stack e-commerce platform with customer storefront, advanced admin dashboard, secure payments, inventory management, and scalable architecture.
 
@@ -58,6 +58,8 @@ Explore the active platform using the following access configurations:
 |---|---|---|
 | **Admin Account** | `admin@example.com` | `AdminSecure123` |
 | **Customer Account** | `customer@example.com` | `CustomerSecure123` |
+
+> Demo credentials are provided only for testing and evaluation purposes.
 
 ---
 
