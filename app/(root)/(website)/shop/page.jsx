@@ -2,7 +2,7 @@
 import Filter from '@/components/application/Website/Filter'
 import Sorting from '@/components/application/Website/Sorting'
 import WebsiteBreadcrumb from '@/components/application/Website/WebsiteBreadcrumb'
-import { WEBSITE_SHOP } from '@/Routes/website'
+import { WEBSITE_SHOP } from '@/routes/website'
 import React, { useState } from 'react'
 import {
   Sheet,

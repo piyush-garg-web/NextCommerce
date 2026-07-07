@@ -1,5 +1,5 @@
 'use client'
-import { USER_DASHBOARD, WEBSITE_HOME, WEBSITE_LOGIN, WEBSITE_SHOP } from '@/Routes/website'
+import { USER_DASHBOARD, WEBSITE_HOME, WEBSITE_LOGIN, WEBSITE_SHOP } from '@/routes/website'
 import Image from 'next/image'
 import Link from 'next/link'
 import React, { useState } from 'react'

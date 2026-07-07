@@ -1,6 +1,6 @@
 import { isAuthenticated } from "@/lib/authentication"
-import { connectToDB } from "@/lib/dbconnection"
-import { catchError, response } from "@/lib/helperfunctions"
+import { connectToDB } from "@/lib/dbConnection"
+import { catchError, response } from "@/lib/helperFunctions"
 import CategoryModel from "@/models/Category.model"
 import OrderModel from "@/models/Order.model"
 import ProductModel from "@/models/Product.model"

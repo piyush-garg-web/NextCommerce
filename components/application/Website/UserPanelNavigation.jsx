@@ -1,7 +1,7 @@
 'use client'
 import { Button } from '@/components/ui/button'
 import { showToast } from '@/lib/showToast'
-import { USER_DASHBOARD, USER_ORDERS, USER_PROFILE, WEBSITE_LOGIN } from '@/Routes/website'
+import { USER_DASHBOARD, USER_ORDERS, USER_PROFILE, WEBSITE_LOGIN } from '@/routes/website'
 import { logout } from '@/store/reducer/authReducer'
 import axios from 'axios'
 import Link from 'next/link'

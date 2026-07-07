@@ -2,7 +2,7 @@ import Image from 'next/image'
 import React from 'react'
 import imgPlaceholder from '@/public/assets/images/img-placeholder.webp'
 import Link from 'next/link'
-import { WEBSITE_PRODUCT_DETAILS} from '@/Routes/website'
+import { WEBSITE_PRODUCT_DETAILS} from '@/routes/website'
 const ProductBox = ({ product }) => {
     return (
         <div className='rounded-lg hover:shadow-lg border overflow-hidden'>

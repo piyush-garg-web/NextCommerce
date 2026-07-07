@@ -1,5 +1,5 @@
-import { connectToDB } from "@/lib/dbconnection";
-import { catchError, response } from "@/lib/helperfunctions";
+import { connectToDB } from "@/lib/dbConnection";
+import { catchError, response } from "@/lib/helperFunctions";
 import MediaModel from "@/models/mediamodel";
 import OrderModel from "@/models/Order.model";
 import ProductModel from "@/models/Product.model";

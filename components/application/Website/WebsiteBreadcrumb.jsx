@@ -1,4 +1,4 @@
-import { WEBSITE_HOME } from '@/Routes/website'
+import { WEBSITE_HOME } from '@/routes/website'
 import Link from 'next/link'
 import React from 'react'
 

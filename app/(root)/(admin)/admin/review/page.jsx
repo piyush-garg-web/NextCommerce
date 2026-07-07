@@ -4,8 +4,8 @@ import DatatableWrapper from '@/components/application/Admin/DatatableWrapper'
 import DeleteAction from '@/components/application/Admin/DeleteAction'
 import { Card, CardContent, CardHeader } from '@/components/ui/card'
 import { DT_REVIEW_COLUMNS} from '@/lib/column'
-import { columnConfig } from '@/lib/helperfunctions'
-import {ADMIN_DASHBOARD, ADMIN_TRASH } from '@/Routes/adminpanel'
+import { columnConfig } from '@/lib/helperFunctions'
+import {ADMIN_DASHBOARD, ADMIN_TRASH } from '@/routes/adminpanel'
 import React, { useCallback, useMemo } from 'react'
 
 

@@ -1,7 +1,7 @@
 'use client'
 import WebsiteBreadcrumb from '@/components/application/Website/WebsiteBreadcrumb'
 import { Button } from '@/components/ui/button'
-import { WEBSITE_CHECKOUT, WEBSITE_PRODUCT_DETAILS, WEBSITE_SHOP } from '@/Routes/website'
+import { WEBSITE_CHECKOUT, WEBSITE_PRODUCT_DETAILS, WEBSITE_SHOP } from '@/routes/website'
 import Image from 'next/image'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'

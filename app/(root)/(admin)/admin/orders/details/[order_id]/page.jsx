@@ -2,10 +2,10 @@
 import Image from "next/image"
 import imgPlaceholder from '@/public/assets/images/img-placeholder.webp'
 import Link from "next/link"
-import { WEBSITE_PRODUCT_DETAILS } from "@/Routes/website"
+import { WEBSITE_PRODUCT_DETAILS } from "@/routes/website"
 import { use, useEffect, useState } from "react"
 import useFetch from "@/hooks/useFetch"
-import { ADMIN_DASHBOARD, ADMIN_ORDER_SHOW } from "@/Routes/adminpanel"
+import { ADMIN_DASHBOARD, ADMIN_ORDER_SHOW } from "@/routes/adminpanel"
 import BreadCrumb from "@/components/application/Admin/BreadCrumb"
 import Select from "@/components/application/Select"
 import { orderStatus } from "@/lib/utils"

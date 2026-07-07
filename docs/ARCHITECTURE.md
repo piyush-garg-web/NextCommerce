@@ -49,7 +49,7 @@ The client application is organized into route groups under `app/(root)`:
 Next.js **Route Handlers** (`app/api/`) serve as a lightweight REST API.
 
 ### Database Connection Management
-The database connection is established via Mongoose inside `lib/dbconnection.js`. To prevent exhausting MongoDB connections during Next.js Hot Module Replacement (HMR) in development, it caches the database connection globally:
+The database connection is established via Mongoose inside `lib/dbConnection.js`. To prevent exhausting MongoDB connections during Next.js Hot Module Replacement (HMR) in development, it caches the database connection globally:
 ```javascript
 let cache = global.mongoose;
 if (!cache) {

@@ -14,7 +14,7 @@ import imgPlaceholder from '@/public/assets/images/img-placeholder.webp'
 import { removeFromCart } from "@/store/reducer/cartReducer";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { WEBSITE_CART, WEBSITE_CHECKOUT } from "@/Routes/website";
+import { WEBSITE_CART, WEBSITE_CHECKOUT } from "@/routes/website";
 import { useEffect, useState } from "react";
 import { showToast } from "@/lib/showToast";
 

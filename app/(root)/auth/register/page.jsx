@@ -16,14 +16,14 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { useForm } from "react-hook-form"
-import { zschema } from '@/lib/zodschema'
-import Custombutton from '@/components/application/CustomButton'
+import { zschema } from '@/lib/zodSchema'
+import CustomButton from '@/components/application/CustomButton'
 import { z } from 'zod'
 import { useState } from 'react'
 import { FaRegEyeSlash } from "react-icons/fa";
 import { FaRegEye } from "react-icons/fa6";
 import Link from 'next/link'
-import { WEBSITE_LOGIN } from "@/Routes/website"
+import { WEBSITE_LOGIN } from "@/routes/website"
 import axios from 'axios'
 import { showToast } from '@/lib/showToast'
 
@@ -140,7 +140,7 @@ const RegisterPage = () => {
                                 />
                             </div>
 
-                            <div className="flex justify-center"> <Custombutton loading={loading} type="submit" text="Create Account" className="w-[300px] mt-7 cursor-pointer" />
+                            <div className="flex justify-center"> <CustomButton loading={loading} type="submit" text="Create Account" className="w-[300px] mt-7 cursor-pointer" />
                             </div>
                             <div className="text-centre">
                                 <div className="flex justify-center items-center mt-4 gap-5">

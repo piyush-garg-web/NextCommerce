@@ -1,6 +1,6 @@
-import { connectToDB } from "@/lib/dbconnection";
-import { response, catchError } from "@/lib/helperfunctions";
-import { zschema } from "@/lib/zodschema";
+import { connectToDB } from "@/lib/dbConnection";
+import { response, catchError } from "@/lib/helperFunctions";
+import { zschema } from "@/lib/zodSchema";
 import OTPModel from "@/models/otp.model";
 import UserModel from "@/models/user.model";
 import { SignJWT } from "jose";

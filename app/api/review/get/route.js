@@ -1,5 +1,5 @@
-import { connectToDB } from "@/lib/dbconnection"
-import { catchError,response } from "@/lib/helperfunctions"
+import { connectToDB } from "@/lib/dbConnection"
+import { catchError,response } from "@/lib/helperFunctions"
 import ReviewModel from "@/models/Review.model"
 import mongoose from "mongoose"
 

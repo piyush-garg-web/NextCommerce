@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server"
-import { USER_DASHBOARD, WEBSITE_LOGIN } from "./Routes/website"
+import { USER_DASHBOARD, WEBSITE_LOGIN } from "./routes/website"
 import { jwtVerify } from "jose"
-import { ADMIN_DASHBOARD } from "./Routes/adminpanel"
+import { ADMIN_DASHBOARD } from "./routes/adminpanel"
 
 export async function middleware(request) {
     try{

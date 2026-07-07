@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server"
-import { connectToDB } from "@/lib/dbconnection"
+import { connectToDB } from "@/lib/dbConnection"
 
 export async function GET() {
     await connectToDB()

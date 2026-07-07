@@ -3,8 +3,8 @@ import Image from "next/image"
 import imgPlaceholder from '@/public/assets/images/img-placeholder.webp'
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { WEBSITE_HOME, WEBSITE_PRODUCT_DETAILS } from "@/Routes/website"
-import { connectToDB } from "@/lib/dbconnection"
+import { WEBSITE_HOME, WEBSITE_PRODUCT_DETAILS } from "@/routes/website"
+import { connectToDB } from "@/lib/dbConnection"
 import OrderModel from "@/models/Order.model"
 import PrintReceiptButton from "@/components/application/Website/PrintReceiptButton"
 

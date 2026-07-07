@@ -1,5 +1,5 @@
-import { connectToDB } from "@/lib/dbconnection";
-import { catchError, response } from "@/lib/helperfunctions";
+import { connectToDB } from "@/lib/dbConnection";
+import { catchError, response } from "@/lib/helperFunctions";
 import { cookies } from "next/headers";
 
 export async function POST(request) {

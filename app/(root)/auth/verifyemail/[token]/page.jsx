@@ -7,7 +7,7 @@ import verificationFailedImg from "@/public/assets/images/verification-failed.gi
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { WEBSITE_HOME } from "@/Routes/website";
+import { WEBSITE_HOME } from "@/routes/website";
 import { use,useEffect,useState } from "react";
 
 const EmailVerification = ({params }) => {

@@ -17,17 +17,17 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { useForm } from "react-hook-form"
-import { zschema } from '@/lib/zodschema'
-import Custombutton from '@/components/application/CustomButton'
+import { zschema } from '@/lib/zodSchema'
+import CustomButton from '@/components/application/CustomButton'
 
 import { useState } from 'react'
 
 import Link from 'next/link'
-import { WEBSITE_LOGIN, WEBSITE_REGISTER } from "@/Routes/website"
+import { WEBSITE_LOGIN, WEBSITE_REGISTER } from "@/routes/website"
 import { showToast } from "@/lib/showToast"
 import axios from 'axios'
 import OTPVerification from '@/components/application/OTPVerification'
-import UpdatePassword from '@/components/application/updatepassword'
+import UpdatePassword from '@/components/application/UpdatePassword'
 
 const ResetPassword = () => {
     const [emailVerificationLoading, setEmailVerificationLoading] = useState(false);
@@ -121,7 +121,7 @@ const ResetPassword = () => {
 
 
 
-                                    <div className="flex justify-center"> <Custombutton loading={emailVerificationLoading} type="submit" text="Send OTP" className="w-[300px] mt-7 cursor-pointer" />
+                                    <div className="flex justify-center"> <CustomButton loading={emailVerificationLoading} type="submit" text="Send OTP" className="w-[300px] mt-7 cursor-pointer" />
                                     </div>
                                     <div className="text-center">
                                         <div className="flex justify-center items-center mt-4 gap-5">

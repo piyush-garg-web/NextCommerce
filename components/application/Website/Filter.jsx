@@ -11,7 +11,7 @@ import { Checkbox } from '@/components/ui/checkbox'
 import { Slider } from '@/components/ui/slider'
 import CustomButton from '../CustomButton'
 import { useRouter, useSearchParams } from 'next/navigation'
-import { WEBSITE_HOME, WEBSITE_SHOP } from '@/Routes/website'
+import { WEBSITE_HOME, WEBSITE_SHOP } from '@/routes/website'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 

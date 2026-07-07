@@ -1,13 +1,13 @@
-import { connectToDB } from "@/lib/dbconnection";
-import { catchError } from "@/lib/helperfunctions";
+import { connectToDB } from "@/lib/dbConnection";
+import { catchError } from "@/lib/helperFunctions";
 import UserModel from "@/models/user.model";
 import z from "zod";
-import { response } from "@/lib/helperfunctions";
-import { zschema } from "@/lib/zodschema";  
+import { response } from "@/lib/helperFunctions";
+import { zschema } from "@/lib/zodSchema";  
 import OTPModel from "@/models/otp.model";
-import { generateOTP } from "@/lib/helperfunctions";
+import { generateOTP } from "@/lib/helperFunctions";
 import { sendMail } from "@/lib/sendMail";
-import { otpEmail } from "@/email/otpemail";
+import { otpEmail } from "@/email/otpEmail";
 
 
 export async function POST(request) {

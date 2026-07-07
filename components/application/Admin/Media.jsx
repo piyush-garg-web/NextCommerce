@@ -1,6 +1,6 @@
 import { Checkbox } from '@/components/ui/checkbox'
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
-import { ADMIN_MEDIA_EDIT } from '@/Routes/adminpanel';
+import { ADMIN_MEDIA_EDIT } from '@/routes/adminpanel';
 import Image from 'next/image'
 import Link from 'next/link';
 import React from 'react'

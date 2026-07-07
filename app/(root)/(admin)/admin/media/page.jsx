@@ -2,7 +2,7 @@
 import BreadCrumb from '@/components/application/Admin/BreadCrumb'
 import UploadMedia from '@/components/application/Admin/UploadMedia'
 import { Card, CardContent, CardHeader } from '@/components/ui/card'
-import { ADMIN_DASHBOARD, ADMIN_MEDIA_SHOW } from '@/Routes/adminpanel'
+import { ADMIN_DASHBOARD, ADMIN_MEDIA_SHOW } from '@/routes/adminpanel'
 import { QueryClient, useInfiniteQuery, useQueryClient } from '@tanstack/react-query'
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'

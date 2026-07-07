@@ -196,7 +196,7 @@ This application uses MongoDB via Mongoose. For a visual Entity Relationship dia
 
 * **HTTP-Only Cookies**: JWT tokens are transmitted via cookies configured as `HttpOnly`, `Secure`, and `SameSite=Strict`, defending the platform against XSS and CSRF token thefts.
 * **Bcrypt Password Hashing**: Hashing algorithm executed pre-save via Mongoose triggers to protect user passphrases.
-* **NoSQL Injection Shield**: Strict validation checks utilizing Zod schema models (`lib/zodschema.js`) enforce validation before database operations.
+* **NoSQL Injection Shield**: Strict validation checks utilizing Zod schema models (`lib/zodSchema.js`) enforce validation before database operations.
 * **Cryptographic Payments Validation**: Secure transaction authentication via HMAC SHA256 checksum checks matching Razorpay signatures.
 
 For a detailed breakdown of security features, see 📄 [Security Policy](docs/SECURITY.md).

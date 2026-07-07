@@ -1,4 +1,4 @@
-import { connectToDB } from '@/lib/dbconnection';
+import { connectToDB } from '@/lib/dbConnection';
 import ProductModel from '@/models/Product.model';
 import MediaModel from '@/models/mediamodel';
 import Link from 'next/link'

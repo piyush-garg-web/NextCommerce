@@ -38,7 +38,7 @@ userSchema.pre('save', async function (next) {
 ## 3. Request Validation & Input Sanitization
 
 To defend the backend against malicious payloads and NoSQL injections:
-* **Zod Schemas (`lib/zodschema.js`)**: All request bodies inside API routes are validated against schema constraints before database queries:
+* **Zod Schemas (`lib/zodSchema.js`)**: All request bodies inside API routes are validated against schema constraints before database queries:
   ```javascript
   const schema = zschema.pick({ amount: true });
   const validate = schema.safeParse(payload);

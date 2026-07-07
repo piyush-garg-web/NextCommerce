@@ -1,5 +1,5 @@
 import { v2 as cloudinary } from 'cloudinary';
-import { catchError } from "@/lib/helperfunctions"
+import { catchError } from "@/lib/helperFunctions"
 import { NextResponse } from "next/server"
 
 

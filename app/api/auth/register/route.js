@@ -1,8 +1,8 @@
-import { emailVerificationLink } from "@/email/emailverificationlink"
-import { connectToDB } from "@/lib/dbconnection"
+import { emailVerificationLink } from "@/email/emailVerificationLink"
+import { connectToDB } from "@/lib/dbConnection"
 import UserModel from "@/models/user.model"
-import { response, catchError } from "@/lib/helperfunctions"
-import { zschema } from "@/lib/zodschema"
+import { response, catchError } from "@/lib/helperFunctions"
+import { zschema } from "@/lib/zodSchema"
 import { SignJWT } from "jose"
 import { sendMail } from "@/lib/sendMail"
 

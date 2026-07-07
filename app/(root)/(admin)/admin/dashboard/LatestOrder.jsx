@@ -11,7 +11,7 @@ import useFetch from "@/hooks/useFetch"
 import Image from "next/image"
 import notFound from '@/public/assets/images/not-found.png'
 import { useEffect, useState } from "react"
-import { statusBadge } from "@/lib/helperfunctions"
+import { statusBadge } from "@/lib/helperFunctions"
 
 const LatestOrder = () => {
   const [latestOrder, setLatestOrder] = useState([])

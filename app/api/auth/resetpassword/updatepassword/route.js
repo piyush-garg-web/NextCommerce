@@ -1,9 +1,9 @@
-import { connectToDB } from "@/lib/dbconnection";
-import { catchError } from "@/lib/helperfunctions";
+import { connectToDB } from "@/lib/dbConnection";
+import { catchError } from "@/lib/helperFunctions";
 import UserModel from "@/models/user.model";
 import z from "zod";
-import { response } from "@/lib/helperfunctions";
-import { zschema } from "@/lib/zodschema";  
+import { response } from "@/lib/helperFunctions";
+import { zschema } from "@/lib/zodSchema";  
 
 
 

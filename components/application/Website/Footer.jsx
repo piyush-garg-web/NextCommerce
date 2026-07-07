@@ -2,7 +2,7 @@ import Image from 'next/image'
 import React from 'react'
 import logo from '@/public/assets/images/logo-black.png'
 import Link from 'next/link'
-import { USER_DASHBOARD, WEBSITE_HOME, WEBSITE_LOGIN, WEBSITE_REGISTER, WEBSITE_SHOP } from '@/Routes/website'
+import { USER_DASHBOARD, WEBSITE_HOME, WEBSITE_LOGIN, WEBSITE_REGISTER, WEBSITE_SHOP } from '@/routes/website'
 import { IoLocationOutline } from "react-icons/io5";
 import { MdLocalPhone } from "react-icons/md";
 import { MdOutlineMail } from "react-icons/md";

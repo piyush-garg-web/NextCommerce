@@ -1,6 +1,6 @@
 import React from 'react'
 import ProductDetails from './ProductDetails'
-import { connectToDB } from '@/lib/dbconnection'
+import { connectToDB } from '@/lib/dbConnection'
 import ProductModel from '@/models/Product.model'
 import ProductVariantModel from '@/models/ProductVariant.model'
 import ReviewModel from '@/models/Review.model'

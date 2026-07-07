@@ -8,7 +8,7 @@ import { OrderOverview } from './OrderOverview'
 import { OrderStatus } from './OrderStatus'
 import LatestOrder from './LatestOrder'
 import LatestReview from './LatestReview'
-import { ADMIN_ORDER_SHOW, ADMIN_REVIEW_SHOW } from '@/Routes/adminpanel'
+import { ADMIN_ORDER_SHOW, ADMIN_REVIEW_SHOW } from '@/routes/adminpanel'
 
 const AdminDashboard = () => {
   return (

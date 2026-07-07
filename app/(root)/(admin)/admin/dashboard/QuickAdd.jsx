@@ -4,7 +4,7 @@ import { BiCategory } from "react-icons/bi";
 import { IoShirtOutline } from "react-icons/io5";
 import { RiCoupon2Line } from "react-icons/ri";
 import { MdOutlinePermMedia } from "react-icons/md";
-import { ADMIN_CATEGORY_ADD, ADMIN_COUPON_ADD, ADMIN_MEDIA_SHOW, ADMIN_PRODUCT_ADD } from '@/Routes/adminpanel';
+import { ADMIN_CATEGORY_ADD, ADMIN_COUPON_ADD, ADMIN_MEDIA_SHOW, ADMIN_PRODUCT_ADD } from '@/routes/adminpanel';
 
 const QuickAdd = () => {
   return (

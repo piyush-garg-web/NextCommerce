@@ -1,7 +1,7 @@
 import { isAuthenticated } from "@/lib/authentication";
 import cloudinary from "@/lib/cloudinary";
-import { connectToDB } from "@/lib/dbconnection";
-import { catchError, response } from "@/lib/helperfunctions";
+import { connectToDB } from "@/lib/dbConnection";
+import { catchError, response } from "@/lib/helperFunctions";
 import UserModel from "@/models/user.model";
 
 

@@ -1,7 +1,7 @@
 import { isAuthenticated } from "@/lib/authentication"
-import { connectToDB } from "@/lib/dbconnection"
-import { catchError,response } from "@/lib/helperfunctions"
-import { zschema } from "@/lib/zodschema"
+import { connectToDB } from "@/lib/dbConnection"
+import { catchError,response } from "@/lib/helperFunctions"
+import { zschema } from "@/lib/zodSchema"
 import ReviewModel from "@/models/Review.model"
 import { authReducer } from "@/store/reducer/authReducer"
 

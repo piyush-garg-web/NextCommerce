@@ -7,7 +7,7 @@ import {
     BreadcrumbPage,
     BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb"
-import { WEBSITE_CART, WEBSITE_PRODUCT_DETAILS, WEBSITE_SHOP } from "@/Routes/website"
+import { WEBSITE_CART, WEBSITE_PRODUCT_DETAILS, WEBSITE_SHOP } from "@/routes/website"
 import Image from "next/image"
 import Link from "next/link"
 import { useEffect, useState } from "react"

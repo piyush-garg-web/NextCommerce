@@ -1,6 +1,6 @@
 "use client";
 import { Input } from "@/components/ui/input";
-import { WEBSITE_SHOP } from "@/Routes/website";
+import { WEBSITE_SHOP } from "@/routes/website";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { IoSearchOutline } from "react-icons/io5";

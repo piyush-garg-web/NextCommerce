@@ -1,9 +1,9 @@
 import React from 'react'
 import { useForm } from "react-hook-form"
 import { FormField } from "@/components/ui/form"
-import Custombutton from '@/components/application/CustomButton'
+import CustomButton from '@/components/application/CustomButton'
 import { zodResolver } from '@hookform/resolvers/zod';
-import { zschema } from '@/lib/zodschema'
+import { zschema } from '@/lib/zodSchema'
 import { Form, FormItem, FormLabel, FormControl, FormMessage } from '@/components/ui/form';
 import { InputOTP, InputOTPGroup, InputOTPSlot } from '@/components/ui/input-otp';
 import { useState } from 'react';
@@ -78,7 +78,7 @@ const OTPVerification = ({ email, onSubmit, loading }) => {
                         </div>
 
 
-                        <div className="flex justify-center"> <Custombutton loading={loading} type="submit" text="Verify" className="w-[300px] mt-7 cursor-pointer" />
+                        <div className="flex justify-center"> <CustomButton loading={loading} type="submit" text="Verify" className="w-[300px] mt-7 cursor-pointer" />
 
                         </div>
                         <div className='text-center mt-5 flex flex-col justify-center items-center'>
