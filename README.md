@@ -9,6 +9,7 @@ A production-grade full-stack e-commerce platform with customer storefront, adva
   <a href="https://www.mongodb.com/"><img src="https://img.shields.io/badge/MongoDB-Atlas-47A248?style=for-the-badge&logo=mongodb&logoColor=white" alt="MongoDB" /></a>
   <a href="https://tailwindcss.com/"><img src="https://img.shields.io/badge/Tailwind_CSS-v4-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white" alt="Tailwind CSS" /></a>
   <a href="https://redux-toolkit.js.org/"><img src="https://img.shields.io/badge/Redux_Toolkit-State-764ABC?style=for-the-badge&logo=redux&logoColor=white" alt="Redux Toolkit" /></a>
+  <a href="https://jwt.io/"><img src="https://img.shields.io/badge/JWT-Authentication-000000?style=for-the-badge&logo=jsonwebtokens&logoColor=white" alt="JWT Authentication" /></a>
   <br />
   <a href="https://razorpay.com/"><img src="https://img.shields.io/badge/Razorpay-Gateway-02042B?style=for-the-badge&logo=razorpay&logoColor=white" alt="Razorpay" /></a>
   <a href="https://cloudinary.com/"><img src="https://img.shields.io/badge/Cloudinary-Media-3448C5?style=for-the-badge&logo=cloudinary&logoColor=white" alt="Cloudinary" /></a>
@@ -65,9 +66,11 @@ Building a typical shopping cart is straightforward. However, resolving the chal
 
 Explore the live NextCommerce application:
 
-* **Live Demo URL**: [https://e-commerce-gilt-seven-85.vercel.app/](https://e-commerce-gilt-seven-85.vercel.app/)
+* **Live Demo URL**: https://e-commerce-gilt-seven-85.vercel.app/
 
-> Demo credentials are available for evaluation purposes. Contact the repository owner for access.
+> **Note:** The customer storefront is publicly accessible.
+>
+> **Admin Dashboard:** To access the Admin Dashboard, please contact the repository owner for the admin credentials (email & password).
 
 ---
 
