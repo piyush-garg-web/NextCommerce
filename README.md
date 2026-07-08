@@ -76,9 +76,9 @@ Explore the live NextCommerce application:
 Here are visual previews of the storefront and checkout screens:
 
 #### Storefront Interface
-| Landing Page | Shop Catalog |
+| Home Page | Shop Catalog |
 | :---: | :---: |
-| ![Landing Page](screenshots/home.png) | ![Shop Catalog](screenshots/shop.png) |
+| ![Home Page](screenshots/home.png) | ![Shop Catalog](screenshots/shop.png) |
 
 | Filtered Catalog | Product Details |
 | :---: | :---: |
@@ -92,9 +92,13 @@ Here are visual previews of the storefront and checkout screens:
 | :---: | :---: |
 | ![Order Details](screenshots/order-details.png) | ![User Login](screenshots/login.png) |
 
-| About Page |
-| :---: |
-| ![About Page](screenshots/about.png) |
+| About Page | Orders Summary |
+| :---: | :---: |
+| ![About Page](screenshots/about.png) | ![Orders Summary](screenshots/orders-summary.png) |
+
+| Admin Dashboard |
+| :---: | 
+| ![Admin Dashboard](screenshots/admin-dashboard.png) 
 
 ---
 
