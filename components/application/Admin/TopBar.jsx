@@ -1,15 +1,16 @@
 'use client'
 import React from 'react'
 import ThemeSwitch from './ThemeSwitch'
-import UserDropdown from './UserDropdown'
 import { Button } from '@/components/ui/button'
-import { RiMenu4Fill } from "react-icons/ri";
+import { RiMenu4Fill, RiHome2Line } from "react-icons/ri";
 import { useSidebar } from '@/components/ui/sidebar';
 import AdminSearch from './AdminSearch'
 import logoBlack from '@/public/assets/images/logo-black.png'
 import logoWhite from '@/public/assets/images/logo-white.png'
 import Image from 'next/image'
 import AdminMobileSearch from './AdminMobileSearch'
+import Link from 'next/link'
+import { WEBSITE_HOME } from '@/routes/website'
 
 const TopBar = () => {
     const {toggleSidebar} = useSidebar()
@@ -29,7 +30,12 @@ const TopBar = () => {
         <div className='flex items-center gap-2'>
             <AdminMobileSearch />
             <ThemeSwitch />
-            <UserDropdown />
+            <Link href={WEBSITE_HOME}>
+              <Button type="button" variant="ghost" className="flex items-center gap-2">
+                <RiHome2Line />
+                <span className="hidden sm:inline">Home</span>
+              </Button>
+            </Link>
             <Button onClick={toggleSidebar} type="button" size="icon" className="ms-2 md:hidden">
                 <RiMenu4Fill />
             </Button>

@@ -1,17 +1,11 @@
 import AppSidebar from '@/components/application/Admin/AppSidebar'
-import ThemeProvider from '@/components/application/Admin/ThemeProvider'
 import TopBar from '@/components/application/Admin/TopBar'
 import { SidebarProvider } from '@/components/ui/sidebar'
 import React from 'react'
 
 const layout = ({ children }) => {
   return (
-<ThemeProvider
-            attribute="class"
-            defaultTheme="light"
-            enableSystem={false}
-            disableTransitionOnChange>
-  <SidebarProvider>
+    <SidebarProvider>
       <div className='flex min-h-screen'>
         <AppSidebar />
         <div className='flex-1 flex flex-col'>
@@ -28,9 +22,6 @@ const layout = ({ children }) => {
         </div>
       </div>
     </SidebarProvider>
-</ThemeProvider>
-
-
   )
 }
 

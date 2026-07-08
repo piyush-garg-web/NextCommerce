@@ -16,3 +16,4 @@ export const WEBSITE_ORDER_DETAILS = (order_id) => `/order-details/${order_id}`
 
 export const USER_PROFILE="/profile"
 export const USER_ORDERS="/orders"
+export const ADMIN_DASHBOARD="/admin/dashboard"
