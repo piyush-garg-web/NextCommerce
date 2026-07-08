@@ -222,7 +222,7 @@ const Datatable = ({
   })
 
   return (
-    <div style={{ width: '100%', height: 500 }}>
+    <div className="w-full h-[500px]">
       <MaterialReactTable table={table} />
     </div>
   )

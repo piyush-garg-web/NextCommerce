@@ -113,8 +113,8 @@ setSelectAll(!selectAll)
         </CardHeader>
         <CardContent className='pb-5'>
 {selectedMedia.length>0 &&
-<div className='py-2 px-3 bg-violet-200 mb-2 rounded flex justify-between items-center'>
-  <Label className='text-black'>
+<div className='py-2 px-3 bg-violet-200 dark:bg-violet-900 mb-2 rounded flex justify-between items-center'>
+  <Label className='text-foreground'>
     <Checkbox checked={selectAll} onCheckedChange={handleSelectAll}
     className='border-primary'/>Select All</Label>
     <div className='flex gap-2'>

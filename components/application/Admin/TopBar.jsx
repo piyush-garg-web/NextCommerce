@@ -31,7 +31,7 @@ const TopBar = () => {
             <AdminMobileSearch />
             <ThemeSwitch />
             <Link href={WEBSITE_HOME}>
-              <Button type="button" variant="ghost" className="flex items-center gap-2">
+              <Button type="button" variant="ghost" className="flex items-center gap-2 cursor-pointer">
                 <RiHome2Line />
                 <span className="hidden sm:inline">Home</span>
               </Button>

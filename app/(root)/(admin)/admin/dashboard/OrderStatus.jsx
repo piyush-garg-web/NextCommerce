@@ -132,27 +132,27 @@ if (orderStatus && orderStatus.success) {
             <div >
                 <ul>
                     <li className="flex justify-between items-center mb-3 text-sm"> 
-                        <span>Pending</span>
+                        <span className="text-foreground">Pending</span>
                         <span className="rounded-full px-2 text-sm bg-blue-500 text-white">{statusCount?.pending || 0}</span>
                     </li>
                       <li className="flex justify-between items-center mb-3 text-sm"> 
-                        <span>Processing</span>
+                        <span className="text-foreground">Processing</span>
                         <span className="rounded-full px-2 text-sm bg-yellow-500 text-white">{statusCount?.processing || 0}</span>  
                     </li>
                       <li className="flex justify-between items-center mb-3 text-sm"> 
-                        <span>Shipped</span>
+                        <span className="text-foreground">Shipped</span>
                         <span className="rounded-full px-2 text-sm bg-cyan-500 text-white">{statusCount?.shipped || 0}</span>
                     </li>
                       <li className="flex justify-between items-center mb-3 text-sm"> 
-                        <span>Delivered</span>
+                        <span className="text-foreground">Delivered</span>
                         <span className="rounded-full px-2 text-sm bg-green-500 text-white">{statusCount?.delivered || 0}</span>
                     </li>
                       <li className="flex justify-between items-center mb-3 text-sm"> 
-                        <span>Cancelled</span>
+                        <span className="text-foreground">Cancelled</span>
                         <span className="rounded-full px-2 text-sm bg-red-500 text-white">{statusCount?.cancelled || 0}</span>
                     </li>
                       <li className="flex justify-between items-center mb-3 text-sm"> 
-                        <span>Unverified</span>
+                        <span className="text-foreground">Unverified</span>
                         <span className="rounded-full px-2 text-sm bg-orange-500 text-white">{statusCount?.unverified || 0}</span>
                     </li>
                 </ul>

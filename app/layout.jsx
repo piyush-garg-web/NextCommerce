@@ -1,5 +1,4 @@
 import GlobalProvider from "@/components/application/GlobalProvider";
-import ThemeProvider from "@/components/application/Admin/ThemeProvider";
 import "./globals.css";
 import { Assistant } from "next/font/google";
 import { ToastContainer } from 'react-toastify';
@@ -24,10 +23,8 @@ export default function RootLayout({ children }) {
         className={`${assistant.className} antialiased`}
       >
         <GlobalProvider>
-          <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false} disableTransitionOnChange>
-            <ToastContainer />
-            {children}
-          </ThemeProvider>
+          <ToastContainer />
+          {children}
         </GlobalProvider>
 
       </body>

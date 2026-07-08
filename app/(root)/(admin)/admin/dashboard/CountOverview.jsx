@@ -17,7 +17,7 @@ const CountOverview = () => {
             <Link href={ADMIN_CATEGORY_SHOW}>
                 <div className='flex items-center justify-between p-3 rounded-lg border shadow border-l-4 border-l-green-400 bg-white dark:bg-card dark:border-gray-800 dark:border-l-green-400'>
                     <div>
-                        <h4 className='font-medium text-gray-500 dark:text-white'>Total Categories</h4>
+                        <h4 className='font-medium text-muted-foreground'>Total Categories</h4>
                         <span className='text-xl font-bold'>{countData?.data?.category || 0}</span>
                     </div>
                     <div>
@@ -30,7 +30,7 @@ const CountOverview = () => {
             <Link href={ADMIN_PRODUCT_SHOW}>
                 <div className='flex items-center justify-between p-3 rounded-lg border shadow border-l-4 border-l-blue-400 bg-white dark:bg-card dark:border-gray-800 dark:border-l-blue-400'>
                     <div>
-                        <h4 className='font-medium text-gray-500 dark:text-white'>Total Products</h4>
+                        <h4 className='font-medium text-muted-foreground'>Total Products</h4>
                         <span className='text-xl font-bold'>{countData?.data?.product || 0}</span>
                     </div>
                     <div>
@@ -43,7 +43,7 @@ const CountOverview = () => {
             <Link href={ADMIN_CUSTOMERS_SHOW}>
                 <div className='flex items-center justify-between p-3 rounded-lg border shadow border-l-4 border-l-yellow-400 bg-white dark:bg-card dark:border-gray-800 dark:border-l-yellow-400'>
                     <div>
-                        <h4 className='font-medium text-gray-500 dark:text-white'>Total Customers</h4>
+                        <h4 className='font-medium text-muted-foreground'>Total Customers</h4>
                         <span className='text-xl font-bold'>{countData?.data?.customer || 0}</span>
                     </div>
                     <div>
@@ -56,7 +56,7 @@ const CountOverview = () => {
             <Link href={ADMIN_ORDER_SHOW}>
                 <div className='flex items-center justify-between p-3 rounded-lg border shadow border-l-4 border-l-cyan-400 bg-white dark:bg-card dark:border-gray-800 dark:border-l-cyan-400'>
                     <div>
-                        <h4 className='font-medium text-gray-500 dark:text-white'>Total Orders</h4>
+                        <h4 className='font-medium text-muted-foreground'>Total Orders</h4>
                         <span className='text-xl font-bold'>{countData?.data?.order || 0}</span>
                     </div>
                     <div>
