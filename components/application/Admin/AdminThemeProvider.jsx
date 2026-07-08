@@ -23,6 +23,14 @@ export const AdminThemeProvider = ({ children }) => {
   useEffect(() => {
     if (mounted) {
       localStorage.setItem('admin-theme', theme)
+      if (theme === 'dark') {
+        document.documentElement.classList.add('dark')
+      } else {
+        document.documentElement.classList.remove('dark')
+      }
+    }
+    return () => {
+      document.documentElement.classList.remove('dark')
     }
   }, [theme, mounted])
 

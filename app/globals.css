@@ -218,3 +218,74 @@
   bottom:15px !important;
 }
 
+/* CKEditor 5 dark theme overrides */
+.dark {
+  --ck-color-base-background: oklch(0.21 0.006 285.885) !important;
+  --ck-color-base-border: oklch(1 0 0 / 10%) !important;
+  --ck-color-base-text: oklch(0.985 0 0) !important;
+  --ck-color-base-action: oklch(0.645 0.246 16.439) !important;
+  --ck-color-base-foreground: oklch(0.141 0.005 285.823) !important;
+  --ck-color-focus-border: oklch(0.645 0.246 16.439) !important;
+  --ck-color-text: oklch(0.985 0 0) !important;
+  
+  --ck-color-button-default-hover-background: oklch(0.274 0.006 286.033) !important;
+  --ck-color-button-default-active-background: oklch(0.274 0.006 286.033) !important;
+  --ck-color-button-on-background: oklch(0.274 0.006 286.033) !important;
+  --ck-color-button-on-hover-background: oklch(0.274 0.006 286.033) !important;
+  --ck-color-button-on-text: oklch(0.985 0 0) !important;
+  
+  --ck-color-list-background: oklch(0.21 0.006 285.885) !important;
+  --ck-color-list-button-hover-background: oklch(0.274 0.006 286.033) !important;
+  
+  --ck-color-panel-background: oklch(0.21 0.006 285.885) !important;
+  --ck-color-panel-border: oklch(1 0 0 / 10%) !important;
+  
+  --ck-color-toolbar-background: oklch(0.21 0.006 285.885) !important;
+  --ck-color-toolbar-border: oklch(1 0 0 / 10%) !important;
+  
+  --ck-color-input-background: oklch(0.141 0.005 285.823) !important;
+  --ck-color-input-border: oklch(1 0 0 / 10%) !important;
+  --ck-color-input-text: oklch(0.985 0 0) !important;
+
+  --ck-color-dropdown-panel-background: oklch(0.21 0.006 285.885) !important;
+  --ck-color-dropdown-panel-border: oklch(1 0 0 / 10%) !important;
+}
+
+.dark .ck.ck-editor__editable_inline {
+  background: oklch(0.141 0.005 285.823) !important;
+  color: oklch(0.985 0 0) !important;
+  border-color: oklch(1 0 0 / 10%) !important;
+}
+
+.dark .ck.ck-toolbar {
+  background: oklch(0.21 0.006 285.885) !important;
+  border-color: oklch(1 0 0 / 10%) !important;
+}
+
+.dark .ck.ck-button {
+  color: oklch(0.985 0 0) !important;
+  cursor: pointer;
+}
+
+.dark .ck.ck-button:hover {
+  background: oklch(0.274 0.006 286.033) !important;
+}
+
+.dark .ck.ck-button.ck-on {
+  background: oklch(0.274 0.006 286.033) !important;
+}
+
+.dark .ck.ck-dropdown__panel {
+  background: oklch(0.21 0.006 285.885) !important;
+  border-color: oklch(1 0 0 / 10%) !important;
+}
+
+.dark .ck.ck-list__item .ck-button:hover {
+  background: oklch(0.274 0.006 286.033) !important;
+}
+
+.dark .ck.ck-labeled-field-view,
+.dark .ck.ck-labeled-field-view__input-wrapper {
+  background: oklch(0.141 0.005 285.823) !important;
+}
+

@@ -28,8 +28,7 @@ if(isMultiple){
 }
 
   return (
-    <label htmlFor={media._id} className='border border-gray-200 dark:border-gray-800 relative group rounded overflow-hidden>
-    '> 
+    <label htmlFor={media._id} className='border border-gray-200 dark:border-zinc-700 relative group rounded overflow-hidden'> 
     
     <div className='absolute top-2 left-2 z-20'>
 <Checkbox id={media._id} checked={selectedMedia.find(m=>m._id===media._id)? true: false} 

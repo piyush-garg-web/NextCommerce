@@ -2,12 +2,12 @@
 import { ThemeProvider } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import Datatable from './Datatable'
-import { useTheme } from 'next-themes'
+import { useAdminTheme } from './AdminThemeProvider'
 import { darkTheme, lightTheme } from '@/lib/materialTheme'
 
 const DatatableWrapper = ({ queryKey,fetchUrl,columnsConfig,initialPageSize = 10,exportEndpoint,deleteEndpoint,deleteType,trashView,createAction}) => {
 
-  const {resolvedTheme}=useTheme()
+  const { theme } = useAdminTheme()
   const [mounted,setMounted]=useState(false)
   useEffect(()=>{
     setMounted(true)
@@ -18,7 +18,7 @@ const DatatableWrapper = ({ queryKey,fetchUrl,columnsConfig,initialPageSize = 10
   }
 
   return (
-   <ThemeProvider theme={resolvedTheme==='dark' ? darkTheme : lightTheme}>
+   <ThemeProvider theme={theme==='dark' ? darkTheme : lightTheme}>
     
     <Datatable  
     queryKey={queryKey}
