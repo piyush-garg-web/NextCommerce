@@ -68,6 +68,8 @@ Explore the live NextCommerce application:
 
 * **Live Demo URL**: https://e-commerce-gilt-seven-85.vercel.app/
 
+* **Developer Portfolio**: https://portfolio-one-livid-15.vercel.app/
+
 > **Note:** The customer storefront is publicly accessible.
 >
 > **Admin Dashboard:** To access the Admin Dashboard, please contact the repository owner for the admin credentials (email & password).
